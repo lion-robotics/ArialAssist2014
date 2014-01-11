@@ -1,0 +1,6 @@
+MIDlet-Name: PracticeFrisbeeRobot
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: FIRST
+MIDlet-1: FrisbeeRobot2013, , edu.wpi.first.wpilibj.templates.FrisbeeRobot2013
+MicroEdition-Profile: IMP-1.0
+MicroEdition-Configuration: CLDC-1.1
