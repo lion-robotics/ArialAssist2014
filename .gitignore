@@ -4,3 +4,4 @@
 *.jar
 *.war
 *.ear
+/ArialAssist2014/build/

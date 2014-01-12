@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.CommandBase;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.ArcadeDriveWithJoystick;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +32,7 @@ public class ArialAssist2014 extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new ArcadeDriveWithJoystick();
 
         // Initialize all subsystems
         CommandBase.init();
