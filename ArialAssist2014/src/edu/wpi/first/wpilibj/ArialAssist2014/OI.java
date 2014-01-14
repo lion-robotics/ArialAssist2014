@@ -4,6 +4,8 @@ package edu.wpi.first.wpilibj.ArialAssist2014;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,6 +16,14 @@ public class OI {
     public Joystick driverJoystick = new Joystick(1);
     public Joystick shooterJoystick = new Joystick(2);
     
+    public Button switchTransmissionButton = 
+            new JoystickButton(driverJoystick, RobotMap.SWITCH_TRANSMISSION_BUTTON);
+    
+    
+    public OI(){
+        switchTransmissionButton.whenPressed(new ShiftTransmission());
+    }
+
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button

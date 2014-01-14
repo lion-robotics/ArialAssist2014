@@ -12,14 +12,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Solenoid;
 
-/**
- *
- * @author Jonathan
- */
 public class DriveTrain extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
     Talon frontLeftTalon;
     Talon rearLeftTalon;
     Talon frontRightTalon;
@@ -27,6 +20,8 @@ public class DriveTrain extends Subsystem {
 
     RobotDrive robotDrive;
 
+    boolean isHiSpeed = true;
+    
     Solenoid leftTransmissionSolenoid;
     Solenoid rightTransmissionSolenoid;
 
@@ -49,9 +44,21 @@ public class DriveTrain extends Subsystem {
     public void driveTank(float leftSpeed, float rightSpeed) {
         robotDrive.tankDrive(leftSpeed, rightSpeed);
     }
+    
+    public boolean getHiSpeed()
+    {
+        return isHiSpeed;
+    }
+    
+    public void setHiSpeed(boolean hiSpeed)
+    {
+        isHiSpeed = hiSpeed;
+        
+        leftTransmissionSolenoid.set(isHiSpeed);
+        rightTransmissionSolenoid.set(isHiSpeed);
+    }
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
         setDefaultCommand(new ArcadeDriveWithJoystick());
     }
 }

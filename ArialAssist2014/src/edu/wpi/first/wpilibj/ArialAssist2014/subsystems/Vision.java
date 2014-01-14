@@ -17,10 +17,6 @@ import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.image.RGBImage;
 
-/**
- *
- * @author Jonathan
- */
 public class Vision extends Subsystem {
 
     //Camera constants used for distance calculation
