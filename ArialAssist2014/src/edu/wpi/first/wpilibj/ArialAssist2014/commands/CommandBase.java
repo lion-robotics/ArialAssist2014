@@ -6,16 +6,17 @@ import edu.wpi.first.wpilibj.ArialAssist2014.OI;
 import edu.wpi.first.wpilibj.ArialAssist2014.subsystems.*;
 
 /**
- * The base for all commands. All atomic commands should subclass CommandBase.
- * CommandBase stores creates and stores each control system. To access a
- * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
+ * The base for all commands. All atomic commands should subclass CommandBase. CommandBase stores creates and stores each control system. To access a subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
+ *
  * @author Author
  */
 public abstract class CommandBase extends Command {
 
     public static OI oi;
-    
+
     public static DriveTrain driveTrain = new DriveTrain();
+    public static BallPickup ballPickup = new BallPickup();
+    public static Shooter shooter = new Shooter();
     public static Vision vision = new Vision();
 
     public static void init() {
@@ -28,6 +29,8 @@ public abstract class CommandBase extends Command {
 
         // Show what command your subsystem is running on the SmartDashboard
         SmartDashboard.putData(driveTrain);
+        SmartDashboard.putData(ballPickup);
+        SmartDashboard.putData(shooter);
         SmartDashboard.putData(vision);
     }
 

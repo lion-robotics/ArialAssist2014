@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
 import edu.wpi.first.wpilibj.buttons.Button;

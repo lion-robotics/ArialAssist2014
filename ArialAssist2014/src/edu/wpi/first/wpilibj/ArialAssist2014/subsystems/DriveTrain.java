@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.ArialAssist2014.subsystems;
 
 import edu.wpi.first.wpilibj.ArialAssist2014.RobotMap;
@@ -26,6 +21,8 @@ public class DriveTrain extends Subsystem {
     Solenoid rightTransmissionSolenoid;
 
     public DriveTrain() {
+        super("DriveTrain");
+        
         frontLeftTalon = new Talon(RobotMap.FRONT_LEFT_DRIVE_TALON);
         rearLeftTalon = new Talon(RobotMap.REAR_LEFT_DRIVE_TAlON);
         frontRightTalon = new Talon(RobotMap.FRONT_LEFT_DRIVE_TALON);

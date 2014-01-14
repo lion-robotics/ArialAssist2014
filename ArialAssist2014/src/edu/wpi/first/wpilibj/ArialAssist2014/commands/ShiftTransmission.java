@@ -6,10 +6,12 @@ public class ShiftTransmission extends CommandBase {
     public boolean isHiSpeed = true;
     
     public ShiftTransmission() {
+        super("ShiftTransmission");
         isHiSpeed = !driveTrain.getHiSpeed();
     }
 
     public ShiftTransmission(boolean hiSpeed){
+        super("ShiftTransmission");
         isHiSpeed = hiSpeed;
     }
 

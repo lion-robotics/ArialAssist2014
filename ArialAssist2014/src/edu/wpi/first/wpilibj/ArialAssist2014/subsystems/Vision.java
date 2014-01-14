@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.ArialAssist2014.subsystems;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -64,6 +59,7 @@ public class Vision extends Subsystem {
     };
 
     public Vision() {
+        super("Vision");
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(NIVision.MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
