@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
@@ -15,12 +14,21 @@ public class OI {
     public Joystick driverJoystick = new Joystick(1);
     public Joystick shooterJoystick = new Joystick(2);
     
-    public Button switchTransmissionButton = 
-            new JoystickButton(driverJoystick, RobotMap.SWITCH_TRANSMISSION_BUTTON);
+    public Button hiTransmission = 
+            new JoystickButton(driverJoystick, RobotMap.TRANSMISSION_HI_BUTTON);
+   
+    public Button lowTransmission = 
+            new JoystickButton(driverJoystick, RobotMap.TRANSMISSION_LOW_BUTTON);
+    
+    public Button shootButton =
+            new JoystickButton(driverJoystick, RobotMap.SHOOT_BUTTON);
+   
     
     
     public OI(){
-        switchTransmissionButton.whenPressed(new ShiftTransmission());
+        hiTransmission.whenPressed(new ShiftTransmission(true));
+        lowTransmission.whenPressed(new ShiftTransmission(false));
+        
     }
 
     //// CREATING BUTTONS

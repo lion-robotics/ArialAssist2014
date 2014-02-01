@@ -17,21 +17,32 @@ public class DriveTrain extends Subsystem {
 
     boolean isHiSpeed = true;
     
-    Solenoid leftTransmissionSolenoid;
-    Solenoid rightTransmissionSolenoid;
+    Solenoid leftTransmissionOne;
+    Solenoid leftTransmissionTwo;
+    Solenoid rightTransmissionOne;
+    Solenoid rightTransmissionTwo;
 
     public DriveTrain() {
         super("DriveTrain");
         
-        frontLeftTalon = new Talon(RobotMap.FRONT_LEFT_DRIVE_TALON);
-        rearLeftTalon = new Talon(RobotMap.REAR_LEFT_DRIVE_TAlON);
-        frontRightTalon = new Talon(RobotMap.FRONT_LEFT_DRIVE_TALON);
-        rearRightTalon = new Talon(RobotMap.REAR_RIGHT_DRIVE_TALON);
+        frontLeftTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.FRONT_LEFT_DRIVE_TALON);
+        rearLeftTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.REAR_LEFT_DRIVE_TAlON);
+        frontRightTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.FRONT_LEFT_DRIVE_TALON);
+        rearRightTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.REAR_RIGHT_DRIVE_TALON);
 
         robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
-        leftTransmissionSolenoid = new Solenoid(RobotMap.LEFT_TRANSMISSION_SOLENOID);
-        rightTransmissionSolenoid = new Solenoid(RobotMap.RIGHT_TRANSMISSION_SOLENOID);
+        leftTransmissionOne = new Solenoid(RobotMap.LEFT_TRANSMISSION_SOLENOID_ONE);
+        leftTransmissionTwo = new Solenoid(RobotMap.LEFT_TRANSMISSION_SOLENOID_TWO);
+        rightTransmissionOne = new Solenoid(RobotMap.RIGHT_TRANSMISSION_SOLENOID_ONE);
+        rightTransmissionTwo = new Solenoid(RobotMap.RIGHT_TRANSMISSION_SOLENOID_TWO);
+        
+        // Sets the default transmission speed.
+        leftTransmissionOne.set(true);
+        leftTransmissionTwo.set(false);
+        
+        rightTransmissionOne.set(true);
+        rightTransmissionTwo.set(false);
     }
 
     public void driveArcade(double moveValue, double rotationValue) {
@@ -51,8 +62,11 @@ public class DriveTrain extends Subsystem {
     {
         isHiSpeed = hiSpeed;
         
-        leftTransmissionSolenoid.set(isHiSpeed);
-        rightTransmissionSolenoid.set(isHiSpeed);
+        leftTransmissionOne.set(!isHiSpeed);
+        leftTransmissionTwo.set(isHiSpeed);
+        
+        rightTransmissionOne.set(!isHiSpeed);
+        rightTransmissionTwo.set(isHiSpeed);
     }
 
     public void initDefaultCommand() {

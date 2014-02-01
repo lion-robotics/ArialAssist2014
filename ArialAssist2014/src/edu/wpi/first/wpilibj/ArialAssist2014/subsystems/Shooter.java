@@ -1,17 +1,27 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.subsystems;
 
+import edu.wpi.first.wpilibj.ArialAssist2014.RobotMap;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.IdleShoot;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Shooter extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
+    Talon leftTalonOne;
+    Talon leftTalonTwo;
+    
+    Talon rightTalonOne;
+    Talon rightTalonTwo;
+    
     public Shooter(){
         super("Shooter");
+        
+        leftTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.LEFT_ONE_SHOOTER_TALON);
+        leftTalonTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.LEFT_TWO_SHOOTER_TALON);
+        rightTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.RIGHT_ONE_SHOOTER_TALON);
+        rightTalonTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.RIGHT_TWO_SHOOTER_TALON);
     }
     public void initDefaultCommand() { 
-            
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new IdleShoot());
     }
 }
