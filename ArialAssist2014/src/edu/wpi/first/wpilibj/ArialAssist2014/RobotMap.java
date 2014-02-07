@@ -9,9 +9,9 @@ public class RobotMap {
             FRONT_RIGHT_DRIVE_TALON = 5,
             REAR_RIGHT_DRIVE_TALON = 6,
             LEFT_ONE_SHOOTER_TALON = 3,
-            LEFT_TWO_SHOOTER_TALON = 4,
-            RIGHT_ONE_SHOOTER_TALON = 7,
-            RIGHT_TWO_SHOOTER_TALON = 8;
+            LEFT_TWO_SHOOTER_TALON = 4, //This Talon can be changed to be used for the picker upper.
+            RIGHT_ONE_SHOOTER_TALON = 7, 
+            RIGHT_TWO_SHOOTER_TALON = 8; //This will be an open Talon
     
     // Solenoid ports.
     public static final int
@@ -23,7 +23,9 @@ public class RobotMap {
     public static final int 
             TRANSMISSION_LOW_BUTTON = 1,
             TRANSMISSION_HI_BUTTON = 2,
-            SHOOT_BUTTON = 3;
+            SHOOT_BUTTON = 3,
+            PICK_UP_BUTTON = 4;
+
     
     public static final int DIGITAL_SIDECAR = 1;
     
