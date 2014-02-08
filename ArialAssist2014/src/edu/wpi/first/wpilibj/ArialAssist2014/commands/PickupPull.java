@@ -9,12 +9,11 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
  * @author
  * Robotics
  */
-public class PickUp extends CommandBase
+public class PickupPull extends CommandBase
 {
     
-    public PickUp()
+    public PickupPull()
     {
-        requires(ballPickup);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
