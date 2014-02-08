@@ -1,23 +1,46 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.subsystems;
 
 import edu.wpi.first.wpilibj.ArialAssist2014.RobotMap;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickUp;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.IdlePickup;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupIdle;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class BallPickup extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
     
-    //Talon pickUpTalon;
+    Talon pickupLeft;
+    Talon pickupRight;
+    Talon roller;
 
     public BallPickup(){
         super("BallPickup");
-        //pickUpTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.LEFT_TWO_SHOOTER_TALON);
+        pickupLeft = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.PICKUP_TALON_LEFT);
+        pickupRight = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.PICKUP_TALON_RIGHT);
     }
     public void initDefaultCommand() {
-        //setDefaultCommand(new PickUp());
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new IdlePickup());
     }
+    public void retractArm(){
+        pickupLeft.set(0.7);
+        pickupRight.set(0.7);
+    }
+    public void extendArm(){
+        pickupLeft.set(-0.7);
+        pickupRight.set(-0.7);
+    }
+     public void stopArm(){
+        pickupLeft.set(0.0);
+        pickupRight.set(0.0);
+    }
+    public void pullIn(){
+        roller.set(0.7);
+    }
+    public void pass(){
+       roller.set(-.7);
+    }
+    
+    public void rollerStop(){
+        roller.set(0.0);
+    }
+    
 }

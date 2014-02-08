@@ -1,9 +1,14 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupAutoRetract;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupExtend;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupPass;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupPull;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,12 +27,36 @@ public class OI {
     
     public Button shootButton =
             new JoystickButton(driverJoystick, RobotMap.SHOOT_BUTTON);
-   
     
+    public Button extend =
+            new JoystickButton(shooterJoystick, RobotMap.EXTEND_UP_BUTTON);
+    
+    public Button retract =
+            new JoystickButton(shooterJoystick, RobotMap.RETRACT_BUTTON);
+    
+    public Button autoRetract =
+            new JoystickButton(shooterJoystick, RobotMap.AUTO_RETRACT);
+   
+    public Button pullRoller =
+            new JoystickButton(shooterJoystick, RobotMap.PULL_ROLLER);
+    
+    public Button passRoller =
+            new JoystickButton(shooterJoystick, RobotMap.PASS_ROLLER);
     
     public OI(){
         hiTransmission.whenPressed(new ShiftTransmission(true));
+        
         lowTransmission.whenPressed(new ShiftTransmission(false));
+        
+        extend.whileHeld(new PickupExtend());
+        
+        retract.whileHeld(new PickupRetract());
+        
+        autoRetract.whileHeld(new PickupAutoRetract());
+        
+        pullRoller.whileHeld(new PickupPull());
+        
+        passRoller.whileHeld(new PickupPass());
         
     }
 

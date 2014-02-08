@@ -16,10 +16,10 @@ public class Shooter extends Subsystem {
     public Shooter(){
         super("Shooter");
         
-        leftTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.LEFT_ONE_SHOOTER_TALON);
-        leftTalonTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.LEFT_TWO_SHOOTER_TALON);
-        rightTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.RIGHT_ONE_SHOOTER_TALON);
-        rightTalonTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.RIGHT_TWO_SHOOTER_TALON);
+        leftTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.SHOOTER_TALON_ONE);
+        leftTalonTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.PICKUP_TALON_LEFT);
+        rightTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.SHOOTER_TALON_TWO);
+        rightTalonTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.PICKUP_TALON_RIGHT);
     }
     public void initDefaultCommand() { 
         setDefaultCommand(new IdleShoot());

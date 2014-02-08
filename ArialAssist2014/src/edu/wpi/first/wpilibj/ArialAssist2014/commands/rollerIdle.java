@@ -9,12 +9,11 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
  * @author
  * Robotics
  */
-public class PickupPull extends CommandBase
+public class rollerIdle extends CommandBase
 {
     
-    public PickupPull()
+    public rollerIdle()
     {
-       
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -27,7 +26,8 @@ public class PickupPull extends CommandBase
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-        ballPickup.pullIn();
+        ballPickup.rollerStop();
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
