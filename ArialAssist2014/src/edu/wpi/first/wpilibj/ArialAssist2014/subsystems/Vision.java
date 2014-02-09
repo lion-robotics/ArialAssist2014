@@ -44,6 +44,20 @@ public class Vision extends Subsystem {
         double rectangularity;
         double aspectRatioVertical;
         double aspectRatioHorizontal;
+        double centerOfMassX = -1;
+        double centerOfMassY = -1;
+        boolean isVertical = false;
+        
+        public String toString(){
+            StringBuffer s = new StringBuffer();
+            s.append("Rectangularity: " + rectangularity);
+            s.append("\n\taspectV: " + aspectRatioVertical);
+            s.append("\n\taspectH: " + aspectRatioHorizontal);
+            s.append("\n\tCenter X: " + centerOfMassX + " Center Y: " + centerOfMassY);
+            s.append("\n\tisVertical: " + isVertical);
+            
+            return s.toString();
+        }
     }
 
     public class TargetReport {
@@ -60,11 +74,12 @@ public class Vision extends Subsystem {
 
     public Vision() {
         super("Vision");
+        camera = AxisCamera.getInstance();
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(NIVision.MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
 
-    public void autonomous() {
+    public void autonomous() throws AxisCameraException {
         TargetReport target = new TargetReport();
         int verticalTargets[] = new int[MAX_PARTICLES];
         int horizontalTargets[] = new int[MAX_PARTICLES];
@@ -75,10 +90,11 @@ public class Vision extends Subsystem {
              * Do the image capture with the camera and apply the algorithm described above. This sample will either get images from the camera or from an image file stored in the top level directory in the flash memory on the cRIO. The file name in this case is "testImage.jpg"
              *
              */
-            //ColorImage image = camera.getImage();     // comment if using stored images
-            ColorImage image;                           // next 2 lines read image from flash on cRIO
-            image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
-            BinaryImage thresholdImage = image.thresholdHSV(105, 137, 230, 255, 133, 183);   // keep only green objects
+            ColorImage image = camera.getImage();     // comment if using stored images
+            //ColorImage image;                           // next 2 lines read image from flash on cRIO
+            //image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
+            BinaryImage thresholdImage = image.thresholdHSV(100, 130, 200, 255, 20, 255);   // keep only green objects
+            //Example program HSV values: 105, 137, 230, 255, 133, 183
             //thresholdImage.write("/threshold.bmp");
             BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // filter out small particles
             //filteredImage.write("/filteredImage.bmp");
@@ -86,6 +102,7 @@ public class Vision extends Subsystem {
             //iterate through each particle and score to see if it is a target
             Scores scores[] = new Scores[filteredImage.getNumberParticles()];
             horizontalTargetCount = verticalTargetCount = 0;
+            System.out.println("Camera scores # " + scores.length);
 
             if (filteredImage.getNumberParticles() > 0) {
                 for (int i = 0; i < MAX_PARTICLES && i < filteredImage.getNumberParticles(); i++) {
@@ -96,19 +113,24 @@ public class Vision extends Subsystem {
                     scores[i].rectangularity = scoreRectangularity(report);
                     scores[i].aspectRatioVertical = scoreAspectRatio(filteredImage, report, i, true);
                     scores[i].aspectRatioHorizontal = scoreAspectRatio(filteredImage, report, i, false);
+                    scores[i].centerOfMassX = report.center_mass_x;
+                    scores[i].centerOfMassY = report.center_mass_y;
+                    scores[i].isVertical = scoreCompare(scores[i], true);
+                    
+                    System.out.println(scores[i].toString());
 
                     //Check if the particle is a horizontal target, if not, check if it's a vertical target
-                    if (scoreCompare(scores[i], false)) {
-                        System.out.println("particle: " + i + "is a Horizontal Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
-                        horizontalTargets[horizontalTargetCount++] = i; //Add particle to target array and increment count
-                    } else if (scoreCompare(scores[i], true)) {
-                        System.out.println("particle: " + i + "is a Vertical Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
-                        verticalTargets[verticalTargetCount++] = i;  //Add particle to target array and increment count
-                    } else {
-                        System.out.println("particle: " + i + "is not a Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
-                    }
-                    System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
-                    System.out.println("ARVert: " + scores[i].aspectRatioVertical);
+//                    if (scoreCompare(scores[i], false)) {
+//                        System.out.println("particle: " + i + "is a Horizontal Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+//                        horizontalTargets[horizontalTargetCount++] = i; //Add particle to target array and increment count
+//                    } else if (scoreCompare(scores[i], true)) {
+//                        System.out.println("particle: " + i + "is a Vertical Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+//                        verticalTargets[verticalTargetCount++] = i;  //Add particle to target array and increment count
+//                    } else {
+//                        System.out.println("particle: " + i + "is not a Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+//                    }
+                  //  System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
+                  //  System.out.println("ARVert: " + scores[i].aspectRatioVertical);
                 }
 
                 //Zero out scores and set verticalIndex to first target in case there are no horizontal targets
@@ -176,9 +198,12 @@ public class Vision extends Subsystem {
 
 //            } catch (AxisCameraException ex) {        // this is needed if the camera.getImage() is called
 //                ex.printStackTrace();
+           
         } catch (NIVisionException ex) {
             ex.printStackTrace();
         }
+        
+        
     }
 
     /**

@@ -18,9 +18,11 @@ public class ShiftTransmission extends CommandBase {
     }
 
     protected void initialize() {
+        driveTrain.setHiSpeed(isHiSpeed);
     }
 
     protected void execute() {
+        
     }
 
     protected boolean isFinished() {

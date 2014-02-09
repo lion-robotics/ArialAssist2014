@@ -11,7 +11,7 @@ public class ArcadeDriveWithJoystick extends CommandBase {
     }
 
     protected void execute() {
-        driveTrain.driveArcade(oi.driverJoystick.getX(), oi.driverJoystick.getZ());
+        driveTrain.driveArcade(oi.driverJoystick.getY(), oi.driverJoystick.getZ());
     }
 
     protected boolean isFinished() {

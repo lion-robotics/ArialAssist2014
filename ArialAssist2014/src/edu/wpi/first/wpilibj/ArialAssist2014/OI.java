@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.FindHotTarget;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmAutoRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmExtend;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPass;
@@ -43,6 +44,9 @@ public class OI {
     public Button passRoller =
             new JoystickButton(shooterJoystick, RobotMap.PASS_ROLLER);
     
+     public Button readCamera =
+            new JoystickButton(shooterJoystick, RobotMap.READ_CAMERA_BUTTON);
+    
     public OI(){
         hiTransmission.whenPressed(new ShiftTransmission(true));
         
@@ -57,6 +61,8 @@ public class OI {
         pullRoller.whileHeld(new PickupRollerPull());
         
         passRoller.whileHeld(new PickupRollerPass());
+        
+        readCamera.whenPressed(new FindHotTarget());
         
     }
 

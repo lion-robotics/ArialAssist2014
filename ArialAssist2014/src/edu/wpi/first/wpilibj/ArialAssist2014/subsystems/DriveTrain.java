@@ -27,7 +27,7 @@ public class DriveTrain extends Subsystem {
         
         frontLeftTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.FRONT_LEFT_DRIVE_TALON);
         rearLeftTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.REAR_LEFT_DRIVE_TAlON);
-        frontRightTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.FRONT_LEFT_DRIVE_TALON);
+        frontRightTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.FRONT_RIGHT_DRIVE_TALON);
         rearRightTalon = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.REAR_RIGHT_DRIVE_TALON);
 
         robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
