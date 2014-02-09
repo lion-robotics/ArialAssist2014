@@ -5,6 +5,8 @@ public class Shoot extends CommandBase
     
     public Shoot()
     {
+        super("Shoot");
+        
         requires(shooter);
     }
 

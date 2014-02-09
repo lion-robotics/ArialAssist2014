@@ -1,13 +1,13 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
-public class IdleShoot extends CommandBase
+public class PickupArmAutoRetract extends CommandBase
 {
     
-    public IdleShoot()
+    public PickupArmAutoRetract()
     {
-       super("IdleShoot");
+        super("PickupArmAutoRetract");
         
-       requires(shooter); 
+        requires(pickupArm);
     }
 
     protected void initialize()

@@ -15,7 +15,8 @@ public abstract class CommandBase extends Command {
     public static OI oi;
 
     public static DriveTrain driveTrain = new DriveTrain();
-    public static BallPickup ballPickup = new BallPickup();
+    public static PickupArm pickupArm = new PickupArm();
+    public static PickupRoller pickupRoller = new PickupRoller();
     public static Shooter shooter = new Shooter();
     public static Vision vision = new Vision();
 
@@ -29,7 +30,8 @@ public abstract class CommandBase extends Command {
 
         // Show what command your subsystem is running on the SmartDashboard
         SmartDashboard.putData(driveTrain);
-        SmartDashboard.putData(ballPickup);
+        SmartDashboard.putData(pickupArm);
+        SmartDashboard.putData(pickupRoller);
         SmartDashboard.putData(shooter);
         SmartDashboard.putData(vision);
     }

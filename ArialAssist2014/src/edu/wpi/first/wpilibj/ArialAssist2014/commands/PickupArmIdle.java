@@ -1,11 +1,13 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
-public class PickupIdle extends CommandBase
+public class PickupArmIdle extends CommandBase
 {
     
-    public PickupIdle()
+    public PickupArmIdle()
     {
-        requires(ballPickup);
+        super("PickupArmIdle");
+        
+        requires(pickupArm);
     }
 
     protected void initialize()
@@ -14,7 +16,7 @@ public class PickupIdle extends CommandBase
 
     protected void execute()
     {
-        ballPickup.stopArm();
+        pickupArm.stopArm();
     }
 
     protected boolean isFinished()

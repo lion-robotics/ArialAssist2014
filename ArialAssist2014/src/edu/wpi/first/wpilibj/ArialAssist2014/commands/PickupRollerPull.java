@@ -1,10 +1,13 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
-public class PickupPass extends CommandBase
+public class PickupRollerPull extends CommandBase
 {
     
-    public PickupPass()
+    public PickupRollerPull()
     {
+        super("PickupRollerPull");
+        
+        requires(pickupRoller);
     }
 
     protected void initialize()
@@ -13,7 +16,7 @@ public class PickupPass extends CommandBase
 
     protected void execute()
     {
-        ballPickup.pass();
+       pickupRoller.pullIn();
     }
 
     protected boolean isFinished()

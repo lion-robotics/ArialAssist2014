@@ -9,10 +9,11 @@ public class RobotMap {
             FRONT_RIGHT_DRIVE_TALON = 5,
             REAR_RIGHT_DRIVE_TALON = 6,
             SHOOTER_TALON_ONE = 3,
-            PICKUP_TALON_LEFT = 4, //This Talon can be changed to be used for the picker upper.
-            SHOOTER_TALON_TWO = 7, 
-            PICKUP_TALON_RIGHT = 8, //This will be an open Talon
-            PICKUP_ROLLER = 9;
+            SHOOTER_TALON_TWO = 7,
+            PICKUP_ARM_LEFT_TALON = 4, //This Talon can be changed to be used for the picker upper.
+            PICKUP_ARM_RIGHT_TALON = 8, //This will be an open Talon
+            PICKUP_ROLLER_ONE_TALON = 9,
+            PICKUP_ROLLER_TWO_TALON = 10;
     
     // Solenoid ports.
     public static final int

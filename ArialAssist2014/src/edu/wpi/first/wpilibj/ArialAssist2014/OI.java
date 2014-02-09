@@ -1,10 +1,10 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupAutoRetract;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupExtend;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupPass;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupPull;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRetract;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmAutoRetract;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmExtend;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPass;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPull;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -48,15 +48,15 @@ public class OI {
         
         lowTransmission.whenPressed(new ShiftTransmission(false));
         
-        extend.whileHeld(new PickupExtend());
+        extend.whileHeld(new PickupArmExtend());
         
-        retract.whileHeld(new PickupRetract());
+        retract.whileHeld(new PickupArmRetract());
         
-        autoRetract.whileHeld(new PickupAutoRetract());
+        autoRetract.whileHeld(new PickupArmAutoRetract());
         
-        pullRoller.whileHeld(new PickupPull());
+        pullRoller.whileHeld(new PickupRollerPull());
         
-        passRoller.whileHeld(new PickupPass());
+        passRoller.whileHeld(new PickupRollerPass());
         
     }
 
