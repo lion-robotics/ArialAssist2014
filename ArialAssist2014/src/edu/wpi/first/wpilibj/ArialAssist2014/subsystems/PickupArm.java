@@ -21,13 +21,13 @@ public class PickupArm extends Subsystem {
     }
     
     public void retractArm(){
-        pickupLeft.set(0.7);
-        pickupRight.set(0.7);
+        pickupLeft.set(0.65);
+        pickupRight.set(0.65);
     }
     
     public void extendArm(){
-        pickupLeft.set(-0.7);
-        pickupRight.set(-0.7);
+        pickupLeft.set(-0.65);
+        pickupRight.set(-0.65);
     }
     
      public void stopArm(){
