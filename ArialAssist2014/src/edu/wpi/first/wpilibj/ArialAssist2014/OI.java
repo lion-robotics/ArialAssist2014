@@ -1,12 +1,19 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.FindHotTarget;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PassShot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmAutoRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmExtend;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPass;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPull;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmRetract;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.ResetEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.Shoot;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.testEncoders;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShootWithoutEncoder;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.TrussShot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -20,32 +27,50 @@ public class OI {
     public Joystick driverJoystick = new Joystick(1);
     public Joystick shooterJoystick = new Joystick(2);
     
+    // Driver Joystick
     public Button hiTransmission = 
             new JoystickButton(driverJoystick, RobotMap.TRANSMISSION_HI_BUTTON);
    
     public Button lowTransmission = 
             new JoystickButton(driverJoystick, RobotMap.TRANSMISSION_LOW_BUTTON);
-    
-    public Button shootButton =
-            new JoystickButton(driverJoystick, RobotMap.SHOOT_BUTTON);
-    
+   
     public Button extend =
-            new JoystickButton(shooterJoystick, RobotMap.EXTEND_UP_BUTTON);
+            new JoystickButton(driverJoystick, RobotMap.EXTEND_UP_BUTTON);
     
     public Button retract =
-            new JoystickButton(shooterJoystick, RobotMap.RETRACT_BUTTON);
+            new JoystickButton(driverJoystick, RobotMap.RETRACT_BUTTON);
     
-    public Button autoRetract =
-            new JoystickButton(shooterJoystick, RobotMap.AUTO_RETRACT);
+    public Button passShot =
+            new JoystickButton(shooterJoystick, RobotMap.PASS_SHOT_BUTTON);
+    
+    public Button trussShot =
+            new JoystickButton(shooterJoystick, RobotMap.TRUSS_SHOT_BUTTON);
    
     public Button pullRoller =
-            new JoystickButton(shooterJoystick, RobotMap.PULL_ROLLER);
+            new JoystickButton(driverJoystick, RobotMap.PULL_ROLLER);
     
     public Button passRoller =
-            new JoystickButton(shooterJoystick, RobotMap.PASS_ROLLER);
+            new JoystickButton(driverJoystick, RobotMap.PASS_ROLLER);
+    
+    // Shooter Joystick.
+    public Button shootButton =
+            new JoystickButton(shooterJoystick, RobotMap.SHOOT_BUTTON);
     
      public Button readCamera =
             new JoystickButton(shooterJoystick, RobotMap.READ_CAMERA_BUTTON);
+     
+     public Button readEncoder = 
+             new JoystickButton(shooterJoystick, RobotMap.CHECK_ENCODER_BUTTON);
+     
+     public Button checkShooter = 
+             new JoystickButton(shooterJoystick, RobotMap.SHOOT_WITHOUT_ENCODER_BUTTON);
+     
+      public Button checkPrime = 
+             new JoystickButton(shooterJoystick, RobotMap.PRIME_WITHOUT_ENCODER_BUTTON);
+      
+      public Button resetEncoder = 
+              new JoystickButton(shooterJoystick, RobotMap.RESET_ENCODER_BUTTON);
+     
     
     public OI(){
         hiTransmission.whenPressed(new ShiftTransmission(true));
@@ -56,13 +81,25 @@ public class OI {
         
         retract.whileHeld(new PickupArmRetract());
         
-        autoRetract.whileHeld(new PickupArmAutoRetract());
+        passShot.whenPressed(new PassShot());
+        
+        trussShot.whenPressed(new TrussShot());
         
         pullRoller.whileHeld(new PickupRollerPull());
         
         passRoller.whileHeld(new PickupRollerPass());
         
-        readCamera.whenPressed(new FindHotTarget());
+        //readCamera.whenPressed(new FindHotTarget());
+        
+        shootButton.whenPressed(new Shoot());
+        
+        readEncoder.whenPressed(new testEncoders());
+        
+        checkShooter.whileHeld(new ShootWithoutEncoder());
+        
+        checkPrime.whileHeld(new RetractWithoutEncoder());
+        
+        resetEncoder.whenPressed(new ResetEncoder());
         
     }
 

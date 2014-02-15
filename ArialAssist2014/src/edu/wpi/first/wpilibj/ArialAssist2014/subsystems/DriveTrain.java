@@ -68,7 +68,7 @@ public class DriveTrain extends Subsystem {
         rightTransmissionOne.set(!isHiSpeed);
         rightTransmissionTwo.set(isHiSpeed);
     }
-
+    
     public void initDefaultCommand() {
         setDefaultCommand(new ArcadeDriveWithJoystick());
     }

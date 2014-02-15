@@ -18,7 +18,7 @@ public abstract class CommandBase extends Command {
     public static PickupArm pickupArm = new PickupArm();
     public static PickupRoller pickupRoller = new PickupRoller();
     public static Shooter shooter = new Shooter();
-    public static Vision vision = new Vision();
+    public static Vision vision = new Vision(); //new Vision();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

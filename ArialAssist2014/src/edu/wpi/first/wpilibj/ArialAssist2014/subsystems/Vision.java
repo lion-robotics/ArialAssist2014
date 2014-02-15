@@ -35,6 +35,8 @@ public class Vision extends Subsystem {
 
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
+    
+    public boolean isHot = false;
 
     AxisCamera camera;          // the axis camera object (connected to the switch)
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
@@ -74,7 +76,7 @@ public class Vision extends Subsystem {
 
     public Vision() {
         super("Vision");
-        camera = AxisCamera.getInstance();
+        //camera = AxisCamera.getInstance();
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(NIVision.MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
@@ -102,7 +104,7 @@ public class Vision extends Subsystem {
             //iterate through each particle and score to see if it is a target
             Scores scores[] = new Scores[filteredImage.getNumberParticles()];
             horizontalTargetCount = verticalTargetCount = 0;
-            System.out.println("Camera scores # " + scores.length);
+            //System.out.println("Camera scores # " + scores.length);
 
             if (filteredImage.getNumberParticles() > 0) {
                 for (int i = 0; i < MAX_PARTICLES && i < filteredImage.getNumberParticles(); i++) {
@@ -118,6 +120,12 @@ public class Vision extends Subsystem {
                     scores[i].isVertical = scoreCompare(scores[i], true);
                     
                     System.out.println(scores[i].toString());
+                    
+                    if(scores.length >= 2){
+                        isHot = true;
+                    }else{
+                        isHot = false;
+                    }
 
                     //Check if the particle is a horizontal target, if not, check if it's a vertical target
 //                    if (scoreCompare(scores[i], false)) {
@@ -180,11 +188,11 @@ public class Vision extends Subsystem {
                     ParticleAnalysisReport distanceReport = filteredImage.getParticleAnalysisReport(target.verticalIndex);
                     double distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
                     if (target.Hot) {
-                        System.out.println("Hot target located");
-                        System.out.println("Distance: " + distance);
+                       // System.out.println("Hot target located");
+                        //System.out.println("Distance: " + distance);
                     } else {
-                        System.out.println("No hot target present");
-                        System.out.println("Distance: " + distance);
+                        //System.out.println("No hot target present");
+                        //System.out.println("Distance: " + distance);
                     }
                 }
             }
@@ -311,7 +319,6 @@ public class Vision extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+
     }
 }

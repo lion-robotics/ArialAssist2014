@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.CommandBase;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ArcadeDriveWithJoystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,6 +37,10 @@ public class ArialAssist2014 extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
+        
+        SmartDashboard.putNumber("Start Position", -20);
+        
+        SmartDashboard.putNumber("End Position", -200);
     }
 
     public void autonomousInit() {
