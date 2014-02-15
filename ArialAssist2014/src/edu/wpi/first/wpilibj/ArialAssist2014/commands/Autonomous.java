@@ -1,30 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.ArialAssist2014.subsystems.Vision;
-import edu.wpi.first.wpilibj.Timer;
 
-/**
- *
- * @author
- * Robotics
- */
 public class Autonomous extends CommandGroup
 {
     
     public Autonomous()
     {
         addParallel(new FindHotTarget());
-        addParallel(new AutoDrive(1.0, 0, 1.0));
+        addSequential(new AutoDrive(1.0, 0, 1.0));
         
         if(CommandBase.vision.isHot){
             addSequential(new Shoot());
         }else{
-            Timer.delay(3);
+            addSequential(new Wait(3.0));
             addSequential(new Shoot());
         }
      
