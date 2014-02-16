@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 public class IdleShoot extends CommandBase
 {
     private int encoderLocation;

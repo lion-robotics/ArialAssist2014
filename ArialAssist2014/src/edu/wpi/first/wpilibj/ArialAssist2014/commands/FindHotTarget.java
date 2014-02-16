@@ -1,16 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
 import edu.wpi.first.wpilibj.camera.AxisCameraException;
 
-/**
- *
- * @author
- * Robotics
- */
 public class FindHotTarget extends CommandBase
 {
     int frameCounter = 0;
@@ -21,13 +12,11 @@ public class FindHotTarget extends CommandBase
         // eg. requires(chassis);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize()
     {
         frameCounter = 5;
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
         try

@@ -1,44 +1,29 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
-/**
- *
- * @author
- * Robotics
- */
 public class testEncoders extends CommandBase
 {
     
     public testEncoders()
     {
         requires(shooter);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize()
     {
         shooter.resetEncoder();
         shooter.startEncoder();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
         System.out.println("Encoder Count: " + shooter.getCount());
     }
-
-    // Make this return true when this Command no longer needs to run execute()
+    
     protected boolean isFinished()
     {
         return false;
     }
 
-    // Called once after isFinished returns true
     protected void end()
     {
     }

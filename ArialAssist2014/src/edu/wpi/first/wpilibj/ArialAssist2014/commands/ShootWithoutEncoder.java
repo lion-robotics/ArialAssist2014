@@ -3,20 +3,12 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
-
-/**
- *
- * @author
- * Robotics
- */
 public class ShootWithoutEncoder extends CommandBase
 {
     
     public ShootWithoutEncoder()
     {
         requires(shooter);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

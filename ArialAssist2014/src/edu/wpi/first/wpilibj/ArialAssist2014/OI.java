@@ -1,19 +1,17 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.FindHotTarget;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PassShot;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmAutoRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmExtend;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPass;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupRollerPull;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmRetract;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ResetEncoder;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.Shoot;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.testEncoders;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShootWithoutEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.TrussShot;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.testEncoders;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

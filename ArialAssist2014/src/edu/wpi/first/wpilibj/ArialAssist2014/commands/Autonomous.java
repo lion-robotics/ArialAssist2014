@@ -9,14 +9,8 @@ public class Autonomous extends CommandGroup
     {
         addParallel(new FindHotTarget());
         addSequential(new AutoDrive(1.0, 0, 1.0));
-        
-        if(CommandBase.vision.isHot){
-            addSequential(new Shoot());
-        }else{
-            addSequential(new Wait(3.0));
-            addSequential(new Shoot());
-        }
-     
+        addSequential(new WaitHotTarget(3.0));
+        addSequential(new Shoot());
         
         // Add Commands here:
         // e.g. addSequential(new Command1());

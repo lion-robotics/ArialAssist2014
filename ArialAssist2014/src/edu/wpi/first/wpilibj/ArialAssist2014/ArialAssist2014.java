@@ -8,15 +8,14 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
 
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.Autonomous;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.CommandBase;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.CommandBase;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.ArcadeDriveWithJoystick;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.Autonomous;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Compressor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
