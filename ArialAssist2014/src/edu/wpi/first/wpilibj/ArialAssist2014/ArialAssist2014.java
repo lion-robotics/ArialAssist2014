@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.ArialAssist2014.commands.CommandBase;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ArcadeDriveWithJoystick;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.Autonomous;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Compressor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,7 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ArialAssist2014 extends IterativeRobot {
 
     Command autonomousCommand;
-
+    Compressor robotCompressor;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -35,6 +37,9 @@ public class ArialAssist2014 extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new Autonomous();
+        
+        robotCompressor = new Compressor(RobotMap.PRESSURE_SWITCH, RobotMap.COMPRESSOR_SPIKE);
+        robotCompressor.start();
 
         // Initialize all subsystems
         CommandBase.init();

@@ -54,6 +54,9 @@ public class RobotMap {
     
     public static final int DIGITAL_SIDECAR = 1;
     
+    public static final int
+            PRESSURE_SWITCH = 5; 
+    
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static final int leftMotor = 1;
