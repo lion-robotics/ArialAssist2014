@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.CommandBase;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ArcadeDriveWithJoystick;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.Autonomous;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -33,7 +34,7 @@ public class ArialAssist2014 extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ArcadeDriveWithJoystick();
+        autonomousCommand = new Autonomous();
 
         // Initialize all subsystems
         CommandBase.init();

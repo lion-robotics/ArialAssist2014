@@ -47,10 +47,10 @@ public class OI {
             new JoystickButton(shooterJoystick, RobotMap.TRUSS_SHOT_BUTTON);
    
     public Button pullRoller =
-            new JoystickButton(driverJoystick, RobotMap.PULL_ROLLER);
+            new JoystickButton(shooterJoystick, RobotMap.PULL_ROLLER);
     
     public Button passRoller =
-            new JoystickButton(driverJoystick, RobotMap.PASS_ROLLER);
+            new JoystickButton(shooterJoystick, RobotMap.PASS_ROLLER);
     
     // Shooter Joystick.
     public Button shootButton =

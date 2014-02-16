@@ -6,14 +6,14 @@ public class RobotMap {
     public static final int 
             FRONT_LEFT_DRIVE_TALON = 1,
             REAR_LEFT_DRIVE_TAlON = 2,
-            FRONT_RIGHT_DRIVE_TALON = 5,
-            REAR_RIGHT_DRIVE_TALON = 6,
-            SHOOTER_TALON_ONE = 7,
-            SHOOTER_TALON_TWO = 8,
-            PICKUP_ARM_LEFT_TALON = 4, //This Talon can be changed to be used for the picker upper.
-            PICKUP_ARM_RIGHT_TALON = 3, //This will be an open Talon
-            PICKUP_ROLLER_ONE_TALON = 9,
-            PICKUP_ROLLER_TWO_TALON = 10;
+            FRONT_RIGHT_DRIVE_TALON = 6,
+            REAR_RIGHT_DRIVE_TALON = 7,
+            SHOOTER_TALON_ONE = 3,
+            SHOOTER_TALON_TWO = 4,
+            PICKUP_ARM_LEFT_TALON = 8, //This Talon can be changed to be used for the picker upper.
+            PICKUP_ARM_RIGHT_TALON = 9, //This will be an open Talon
+            PICKUP_ROLLER_ONE_TALON = 5,
+            COMPRESSOR_SPIKE = 10;
     
     // Solenoid ports.
     public static final int
@@ -22,10 +22,13 @@ public class RobotMap {
             RIGHT_TRANSMISSION_SOLENOID_ONE = 3,
             RIGHT_TRANSMISSION_SOLENOID_TWO = 4;
     
+    
     //encoders
     public static final int
             DRIVE_ENCODER_PORT_1 = 1,
-            DRIVE_ENCODER_PORT_2 = 2;
+            DRIVE_ENCODER_PORT_2 = 2,
+            ARM_ENCODER_PORT_1 = 3,
+            ARM_ENCODER_PORT_2 = 4;
     
     // Driver Joystick
     public static final int 

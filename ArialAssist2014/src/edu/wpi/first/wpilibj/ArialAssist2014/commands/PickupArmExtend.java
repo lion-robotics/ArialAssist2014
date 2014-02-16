@@ -2,6 +2,8 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
 public class PickupArmExtend extends CommandBase
 {
+    int extendDistance = 200;
+    boolean hasExtended = false;
     
     public PickupArmExtend()
     {   
@@ -12,15 +14,29 @@ public class PickupArmExtend extends CommandBase
     
     protected void initialize()
     {
+//        shooter.resetEncoder();
+//        shooter.startEncoder();
+//        hasExtended = false;
     }
 
     protected void execute()
     {
-        pickupArm.extendArm();
+//        if(pickupArm.getCount() > hasExtended){  //SmartDashboard.getNumber("Stop Position")) {
+//            
+            System.out.println(pickupArm.getCount());
+            pickupArm.extendArm();
+//            
+//        }
+//        else{
+//            pickupArm.stopArm();
+//            hasExtended = true;
+//        }
+//       
     }
 
     protected boolean isFinished()
     {
+        //return hasExtended;
         return false;
     }
 

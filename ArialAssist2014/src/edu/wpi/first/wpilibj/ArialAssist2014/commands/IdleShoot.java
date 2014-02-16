@@ -24,7 +24,7 @@ public class IdleShoot extends CommandBase
 
     protected void execute()
     {
-        if(shooter.getCount() < 0) { //SmartDashboard.getNumber("Start Position")){
+        if(shooter.getCount() > 0) { //SmartDashboard.getNumber("Start Position")){
             System.out.println(shooter.getCount());
             shooter.retractShooter();
             

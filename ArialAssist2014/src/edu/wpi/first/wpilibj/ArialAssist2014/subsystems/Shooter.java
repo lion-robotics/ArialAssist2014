@@ -43,8 +43,8 @@ public class Shooter extends Subsystem {
     }
     
     public void shootBall(){
-        leftTalonOne.set(-.2);
-        rightTalonOne.set(-.2);
+        leftTalonOne.set(-1);
+        rightTalonOne.set(-1);
     }
     
     public void idleShooter(){
@@ -53,8 +53,8 @@ public class Shooter extends Subsystem {
     }
     
     public void retractShooter(){
-        leftTalonOne.set(.2);
-        rightTalonOne.set(.2);
+        leftTalonOne.set(.1);
+        rightTalonOne.set(.1);
     }
     
     public int getCount(){

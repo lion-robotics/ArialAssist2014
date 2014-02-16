@@ -14,7 +14,7 @@ public class PickupRoller extends Subsystem {
         super("PickupRoller");
         
         rollerOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.PICKUP_ROLLER_ONE_TALON);
-        rollerTwo = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.PICKUP_ROLLER_TWO_TALON);   
+         
     }
     
     public void initDefaultCommand() {
@@ -23,15 +23,15 @@ public class PickupRoller extends Subsystem {
     
     public void pullIn(){
         rollerOne.set(1);
-        rollerTwo.set(1);
+       
     }
     public void pass(){
        rollerOne.set(-1);
-       rollerTwo.set(-1);
+       
     }
     
     public void stopRoller(){
         rollerOne.stopMotor();
-        rollerTwo.stopMotor();
+        
     }
 }

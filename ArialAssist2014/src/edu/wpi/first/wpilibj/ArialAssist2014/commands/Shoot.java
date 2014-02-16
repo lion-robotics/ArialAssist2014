@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shoot extends CommandBase
 {
-    private int isShot = -200;
+    private int isShot = 200;
     boolean hasShot = false;
     
     public Shoot()
@@ -23,7 +23,7 @@ public class Shoot extends CommandBase
 
     protected void execute()
     {
-        if(shooter.getCount() > isShot){  //SmartDashboard.getNumber("Stop Position")) {
+        if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
             
             System.out.println(shooter.getCount());
             shooter.shootBall();
