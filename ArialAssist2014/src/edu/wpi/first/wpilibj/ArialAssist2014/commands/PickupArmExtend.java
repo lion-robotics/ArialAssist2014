@@ -14,30 +14,16 @@ public class PickupArmExtend extends CommandBase
     
     protected void initialize()
     {
-//        shooter.resetEncoder();
-//        shooter.startEncoder();
-//        hasExtended = false;
     }
 
     protected void execute()
     {
-//        if(pickupArm.getCount() > hasExtended){  //SmartDashboard.getNumber("Stop Position")) {
-//            
-            System.out.println(pickupArm.getCount());
-            pickupArm.extendArm();
-//            
-//        }
-//        else{
-//            pickupArm.stopArm();
-//            hasExtended = true;
-//        }
-//       
+        pickupArm.extendArm();
     }
 
     protected boolean isFinished()
     {
-        //return hasExtended;
-        return false;
+        return true;
     }
 
     protected void end()

@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 public class TrussShot extends CommandBase
 {
     
-    private int isShot = -150;
+    private int isShot = 150;
     boolean hasShot = false;
     
     public TrussShot()

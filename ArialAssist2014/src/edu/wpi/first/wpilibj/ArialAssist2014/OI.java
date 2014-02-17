@@ -75,9 +75,9 @@ public class OI {
         
         lowTransmission.whenPressed(new ShiftTransmission(false));
         
-        extend.whileHeld(new PickupArmExtend());
+        extend.whenPressed(new PickupArmExtend());
         
-        retract.whileHeld(new PickupArmRetract());
+        retract.whenPressed(new PickupArmRetract());
         
         passShot.whenPressed(new PassShot());
         

@@ -20,15 +20,14 @@ public class RobotMap {
             LEFT_TRANSMISSION_SOLENOID_ONE = 1,
             LEFT_TRANSMISSION_SOLENOID_TWO = 2,
             RIGHT_TRANSMISSION_SOLENOID_ONE = 3,
-            RIGHT_TRANSMISSION_SOLENOID_TWO = 4;
-    
+            RIGHT_TRANSMISSION_SOLENOID_TWO = 4,
+            ARM_SOLENOID_ONE = 5,
+            ARM_SOLENOID_TWO = 6;
     
     //encoders
     public static final int
             DRIVE_ENCODER_PORT_1 = 1,
-            DRIVE_ENCODER_PORT_2 = 2,
-            ARM_ENCODER_PORT_1 = 3,
-            ARM_ENCODER_PORT_2 = 4;
+            DRIVE_ENCODER_PORT_2 = 2;
     
     // Driver Joystick
     public static final int 
