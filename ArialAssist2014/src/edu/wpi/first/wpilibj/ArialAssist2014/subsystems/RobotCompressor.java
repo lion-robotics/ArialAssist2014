@@ -30,4 +30,12 @@ public class RobotCompressor extends Subsystem
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void start(){
+        robotCompressor.start();
+    }
+    
+    public void stop(){
+        robotCompressor.stop();
+    }
 }

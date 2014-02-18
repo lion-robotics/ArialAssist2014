@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.ArialAssist2014.commands.ResetEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.Shoot;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShootInRange;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShootWithoutEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.TrussShot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.testEncoders;
@@ -68,6 +69,9 @@ public class OI {
       
       public Button resetEncoder = 
               new JoystickButton(shooterJoystick, RobotMap.RESET_ENCODER_BUTTON);
+      
+      public Button shootInRange =
+              new JoystickButton(shooterJoystick, RobotMap.SHOOT_IN_RANGE_BUTTON);
      
     
     public OI(){
@@ -98,6 +102,8 @@ public class OI {
         checkPrime.whileHeld(new RetractWithoutEncoder());
         
         resetEncoder.whenPressed(new ResetEncoder());
+        
+        shootInRange.whileHeld(new ShootInRange());
         
     }
 

@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shoot extends CommandBase
@@ -19,6 +20,10 @@ public class Shoot extends CommandBase
         shooter.resetEncoder();
         shooter.startEncoder();
         hasShot = false;
+        //pickupArm.extendArm();
+        compressor.stop();
+        Timer.delay(.2);
+        
     }
 
     protected void execute()
@@ -42,6 +47,7 @@ public class Shoot extends CommandBase
 
     protected void end()
     {
+        compressor.start();
     }
 
     protected void interrupted()

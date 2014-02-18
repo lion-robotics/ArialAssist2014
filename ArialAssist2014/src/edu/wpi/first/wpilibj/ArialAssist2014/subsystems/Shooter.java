@@ -1,12 +1,16 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.ArialAssist2014.RobotMap;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.IdleShoot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.testIdle;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalModule;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Shooter extends Subsystem {
@@ -15,6 +19,7 @@ public class Shooter extends Subsystem {
     Talon rightTalonOne;
     
     Encoder driveEncoder;
+    I2C rangeFinder;
     
     public Shooter(){
         super("Shooter");
@@ -34,7 +39,7 @@ public class Shooter extends Subsystem {
         
         startEncoder();
         
-       
+        rangeFinder = new I2C(DigitalModule.getInstance(RobotMap.DIGITAL_SIDECAR), RobotMap.RANGE_FINDER_ID);
        
     }
     public void initDefaultCommand() { 
@@ -102,5 +107,29 @@ public class Shooter extends Subsystem {
     public void trussShot(){
         leftTalonOne.set(1);
         rightTalonOne.set(1);
+    }
+    
+    // Retuerns number of centimeters to closest object.
+    
+    public double GetRangeFeet()
+    {
+        int centimeters;
+        
+        rangeFinder.write(RobotMap.RANGE_FINDER_ID, RobotMap.RANGE_READ_MESSAGE);
+        
+        byte data[] = new byte[2];
+        
+        rangeFinder.read(RobotMap.RANGE_FINDER_ID, 2, data);
+        
+        // MSB byte 0
+        // LSB byte 1
+        
+        // Javs is Big Endian
+        centimeters = (data[0] << 8) | data[1];
+        
+        // 1 cm *  1 in   *  1 ft 
+        //        2.54 cm   12 in
+        
+        return centimeters / 2.54 / 12.0;
     }
 }

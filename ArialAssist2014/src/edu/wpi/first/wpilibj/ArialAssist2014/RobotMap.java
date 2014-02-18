@@ -46,13 +46,21 @@ public class RobotMap {
             PASS_SHOT_BUTTON = 2,
             PASS_ROLLER = 11,
             PULL_ROLLER = 12,
-            RESET_ENCODER_BUTTON = 4; //Shooter 2
+            RESET_ENCODER_BUTTON = 4,
+            SHOOT_IN_RANGE_BUTTON = 8; //Shooter 2
     
     
     public static final int DIGITAL_SIDECAR = 1;
     
     public static final int
-            PRESSURE_SWITCH = 5; 
+            PRESSURE_SWITCH = 5;
+    
+    // 7-bit address 0x70
+    // 8-bit address 0xE0
+    
+    public static final int
+            RANGE_FINDER_ID = 0x70,
+            RANGE_READ_MESSAGE = 0x51;
     
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
