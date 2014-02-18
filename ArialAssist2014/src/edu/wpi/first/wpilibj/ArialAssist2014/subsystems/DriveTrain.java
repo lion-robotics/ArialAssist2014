@@ -32,17 +32,12 @@ public class DriveTrain extends Subsystem {
 
         robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
-        leftTransmissionOne = new Solenoid(RobotMap.LEFT_TRANSMISSION_SOLENOID_ONE);
-        leftTransmissionTwo = new Solenoid(RobotMap.LEFT_TRANSMISSION_SOLENOID_TWO);
-        rightTransmissionOne = new Solenoid(RobotMap.RIGHT_TRANSMISSION_SOLENOID_ONE);
-        rightTransmissionTwo = new Solenoid(RobotMap.RIGHT_TRANSMISSION_SOLENOID_TWO);
+        leftTransmissionOne = new Solenoid(RobotMap.TRANSMISSION_SOLENOID_ONE);
+        rightTransmissionOne = new Solenoid(RobotMap.TRANSMISSION_SOLENOID_TWO);
         
         // Sets the default transmission speed.
         leftTransmissionOne.set(true);
-        leftTransmissionTwo.set(false);
-        
-        rightTransmissionOne.set(true);
-        rightTransmissionTwo.set(false);
+        rightTransmissionOne.set(false);
     }
 
     public void driveArcade(double moveValue, double rotationValue) {
@@ -63,10 +58,8 @@ public class DriveTrain extends Subsystem {
         isHiSpeed = hiSpeed;
         
         leftTransmissionOne.set(!isHiSpeed);
-        leftTransmissionTwo.set(isHiSpeed);
         
-        rightTransmissionOne.set(!isHiSpeed);
-        rightTransmissionTwo.set(isHiSpeed);
+        rightTransmissionOne.set(isHiSpeed);
     }
     
     public void initDefaultCommand() {

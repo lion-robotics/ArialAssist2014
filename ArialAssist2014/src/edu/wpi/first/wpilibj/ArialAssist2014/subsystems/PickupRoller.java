@@ -22,11 +22,11 @@ public class PickupRoller extends Subsystem {
     }
     
     public void pullIn(){
-        rollerOne.set(1);
+        rollerOne.set(.8);
        
     }
     public void pass(){
-       rollerOne.set(-1);
+       rollerOne.set(-.8);
        
     }
     

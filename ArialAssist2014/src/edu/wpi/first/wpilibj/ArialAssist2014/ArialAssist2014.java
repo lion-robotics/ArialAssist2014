@@ -27,7 +27,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ArialAssist2014 extends IterativeRobot {
 
     Command autonomousCommand;
-    Compressor robotCompressor;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -37,15 +36,9 @@ public class ArialAssist2014 extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new Autonomous();
         
-        robotCompressor = new Compressor(RobotMap.DIGITAL_SIDECAR, RobotMap.PRESSURE_SWITCH, RobotMap.DIGITAL_SIDECAR, RobotMap.COMPRESSOR_SPIKE);
-        robotCompressor.start();
-
         // Initialize all subsystems
         CommandBase.init();
         
-        //SmartDashboard.putNumber("Start Position", -20);
-        
-        //SmartDashboard.putNumber("End Position", -200);
     }
 
     public void autonomousInit() {

@@ -26,13 +26,13 @@ public class PickupArm extends Subsystem {
     }
     
     public void retractArm(){
-       ArmOne.set(true);
-       ArmTwo.set(false);
+       ArmOne.set(false);
+       ArmTwo.set(true);
     }
     
     public void extendArm(){
-       ArmOne.set(false);
-       ArmTwo.set(true);
+       ArmOne.set(true);
+       ArmTwo.set(false);
     }
     
 }
