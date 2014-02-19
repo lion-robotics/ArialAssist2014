@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.ArialAssist2014.commands.testIdle;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalModule;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Talon;
@@ -40,7 +41,7 @@ public class Shooter extends Subsystem {
         startEncoder();
         
         rangeFinder = new I2C(DigitalModule.getInstance(RobotMap.DIGITAL_SIDECAR), RobotMap.RANGE_FINDER_ID);
-       
+        rangeFinder.setCompatabilityMode(false);
     }
     public void initDefaultCommand() { 
         setDefaultCommand(new IdleShoot());
@@ -58,8 +59,8 @@ public class Shooter extends Subsystem {
     }
     
     public void retractShooter(){
-        leftTalonOne.set(.1);
-        rightTalonOne.set(.1);
+        leftTalonOne.set(.15);
+        rightTalonOne.set(.15);
     }
     
     public int getCount(){
@@ -100,20 +101,21 @@ public class Shooter extends Subsystem {
     
     public void passShot()
     {
-        leftTalonOne.set(.5);
-        rightTalonOne.set(.5);
+        leftTalonOne.set(-.35);
+        rightTalonOne.set(-.35);
     }
     
     public void trussShot(){
-        leftTalonOne.set(1);
-        rightTalonOne.set(1);
+        leftTalonOne.set(-1);
+        rightTalonOne.set(-1);
     }
     
     // Retuerns number of centimeters to closest object.
     
-    public double GetRangeFeet()
+    public double getRangeFeet()
     {
         int centimeters;
+        double range;
         
         rangeFinder.write(RobotMap.RANGE_FINDER_ID, RobotMap.RANGE_READ_MESSAGE);
         
@@ -130,6 +132,14 @@ public class Shooter extends Subsystem {
         // 1 cm *  1 in   *  1 ft 
         //        2.54 cm   12 in
         
-        return centimeters / 2.54 / 12.0;
+        range = centimeters / 2.54 / 12.0;
+        
+        DriverStationLCD.getInstance().println(
+            DriverStationLCD.Line.kUser1,
+            1,
+            "Range ft: " + range);
+        
+        return range;
     }
+    
 }

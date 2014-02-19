@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
+import edu.wpi.first.wpilibj.Timer;
+
 public class WaitHotTarget extends CommandBase
 {
     double timeout;
@@ -7,11 +9,12 @@ public class WaitHotTarget extends CommandBase
     public WaitHotTarget(double timeout)
     {
         this.timeout = timeout;
-        setTimeout(timeout);
     }
 
     protected void initialize()
     {
+        System.out.println(vision.isHot);
+        System.out.println(vision.numberOfTargets);
     }
 
     protected void execute()
@@ -20,7 +23,12 @@ public class WaitHotTarget extends CommandBase
 
     protected boolean isFinished()
     {
-        return vision.isHot || isTimedOut();
+        if(vision.isHot){
+            return true;
+        }else{
+            Timer.delay(3.0);
+            return true;
+        }
     }
 
     protected void end()

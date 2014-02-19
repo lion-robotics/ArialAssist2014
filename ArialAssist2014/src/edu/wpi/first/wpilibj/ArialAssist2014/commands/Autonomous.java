@@ -1,16 +1,25 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.StartCommand;
 
 public class Autonomous extends CommandGroup
 {
     
     public Autonomous()
     {
-        addParallel(new FindHotTarget());
-        addSequential(new AutoDrive(1.0, 0, 1.0));
+        
+        addSequential(new FindHotTarget());
+        addSequential(new ShiftLow());
+        Timer.delay(.1);
+        addParallel(new RunRollersBackwards());
+        addSequential(new PickupArmRetract());
+        addSequential(new AutoDrive(-1, 0, 2.2));
         addSequential(new WaitHotTarget(3.0));
         addSequential(new Shoot());
+        addSequential(new PickupArmRetract());
+        addSequential(new IdleShoot());
         
         // Add Commands here:
         // e.g. addSequential(new Command1());

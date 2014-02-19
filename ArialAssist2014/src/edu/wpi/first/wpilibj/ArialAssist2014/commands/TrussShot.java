@@ -3,8 +3,8 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 public class TrussShot extends CommandBase
 {
     
-    private int isShot = 150;
-    boolean hasShot = false;
+    private int isShot = 100;
+    boolean hasTrussShot = false;
     
     public TrussShot()
     {
@@ -16,33 +16,35 @@ public class TrussShot extends CommandBase
     {
         shooter.resetEncoder();
         shooter.startEncoder();
-        hasShot = false;
+        hasTrussShot = false;
+        compressor.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-        if(shooter.getCount() > isShot){  //SmartDashboard.getNumber("Stop Position")) {
+        if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
             
-            System.out.println(shooter.getCount());
+           // System.out.println(shooter.getCount());
             shooter.trussShot();
             
         }
         else{
             shooter.idleShooter();
-            hasShot = true;
+            hasTrussShot = true;
         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return hasShot;
+        return hasTrussShot;
     }
 
     // Called once after isFinished returns true
     protected void end()
     {
+        compressor.start();
     }
 
     // Called when another command which requires one or more of the same

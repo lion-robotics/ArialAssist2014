@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.GetRange;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PassShot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmExtend;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmRetract;
@@ -9,8 +10,8 @@ import edu.wpi.first.wpilibj.ArialAssist2014.commands.ResetEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShiftTransmission;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.Shoot;
-import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShootInRange;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.ShootWithoutEncoder;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.StopShooter;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.TrussShot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.testEncoders;
 import edu.wpi.first.wpilibj.Joystick;
@@ -55,8 +56,11 @@ public class OI {
     public Button shootButton =
             new JoystickButton(shooterJoystick, RobotMap.SHOOT_BUTTON);
     
-     public Button readCamera =
-            new JoystickButton(shooterJoystick, RobotMap.READ_CAMERA_BUTTON);
+    // public Button readCamera =
+           // new JoystickButton(shooterJoystick, RobotMap.READ_CAMERA_BUTTON);
+    
+    public Button getRange = 
+            new JoystickButton(driverJoystick, RobotMap.GET_RANGE);
      
      public Button readEncoder = 
              new JoystickButton(shooterJoystick, RobotMap.CHECK_ENCODER_BUTTON);
@@ -72,6 +76,9 @@ public class OI {
       
       public Button shootInRange =
               new JoystickButton(shooterJoystick, RobotMap.SHOOT_IN_RANGE_BUTTON);
+      
+      public Button stopTheMotor = 
+              new JoystickButton(shooterJoystick, RobotMap.STOP_SHOOTER_BUTTON);
      
     
     public OI(){
@@ -91,6 +98,8 @@ public class OI {
         
         passRoller.whileHeld(new PickupRollerPass());
         
+        stopTheMotor.whenPressed(new StopShooter());
+        
         //readCamera.whenPressed(new FindHotTarget());
         
         shootButton.whenPressed(new Shoot());
@@ -103,7 +112,8 @@ public class OI {
         
         resetEncoder.whenPressed(new ResetEncoder());
         
-        shootInRange.whileHeld(new ShootInRange());
+        getRange.whileHeld(new GetRange());
+        //shootInRange.whileHeld(new ShootInRange());
         
     }
 

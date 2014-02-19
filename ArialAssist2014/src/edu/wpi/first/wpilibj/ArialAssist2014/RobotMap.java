@@ -32,13 +32,14 @@ public class RobotMap {
             TRANSMISSION_LOW_BUTTON = 11, //Driver 1
             TRANSMISSION_HI_BUTTON = 12, //Driver 1
             RETRACT_BUTTON = 3, //Driver 1
-            EXTEND_UP_BUTTON = 5; //Driver 1
+            EXTEND_UP_BUTTON = 5,
+            GET_RANGE = 2; //Driver 1
 
 
     // Shooter Joystick
     public static final int
             SHOOT_BUTTON = 1, //Shooter 2
-            READ_CAMERA_BUTTON = 7, //Shooter 2
+            //READ_CAMERA_BUTTON = 7, //Shooter 2
             CHECK_ENCODER_BUTTON = 6, //Shooter 2
             SHOOT_WITHOUT_ENCODER_BUTTON = 9, //Shooter 2, Oh Shit Button 
             PRIME_WITHOUT_ENCODER_BUTTON = 10, //Shooter 2
@@ -47,7 +48,8 @@ public class RobotMap {
             PASS_ROLLER = 11,
             PULL_ROLLER = 12,
             RESET_ENCODER_BUTTON = 4,
-            SHOOT_IN_RANGE_BUTTON = 8; //Shooter 2
+            SHOOT_IN_RANGE_BUTTON = 8,
+            STOP_SHOOTER_BUTTON = 7; //Shooter 2
     
     
     public static final int DIGITAL_SIDECAR = 1;

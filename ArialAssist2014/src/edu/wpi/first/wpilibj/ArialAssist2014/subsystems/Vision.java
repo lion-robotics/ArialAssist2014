@@ -37,6 +37,7 @@ public class Vision extends Subsystem {
     final int MAX_PARTICLES = 8;
     
     public boolean isHot = false;
+    public int numberOfTargets = 0;
 
     AxisCamera camera;          // the axis camera object (connected to the switch)
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
@@ -76,7 +77,7 @@ public class Vision extends Subsystem {
 
     public Vision() {
         super("Vision");
-        //camera = AxisCamera.getInstance();
+        camera = AxisCamera.getInstance();
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(NIVision.MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
@@ -95,7 +96,7 @@ public class Vision extends Subsystem {
             ColorImage image = camera.getImage();     // comment if using stored images
             //ColorImage image;                           // next 2 lines read image from flash on cRIO
             //image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
-            BinaryImage thresholdImage = image.thresholdHSV(100, 130, 200, 255, 20, 255);   // keep only green objects
+            BinaryImage thresholdImage = image.thresholdHSV(100, 130, 245, 255, 20, 255);   // keep only green objects
             //Example program HSV values: 105, 137, 230, 255, 133, 183
             //thresholdImage.write("/threshold.bmp");
             BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // filter out small particles
@@ -121,9 +122,12 @@ public class Vision extends Subsystem {
                     
                     System.out.println(scores[i].toString());
                     
+                    numberOfTargets = scores.length; 
+                    
                     if(scores.length >= 2){
+                        
                         isHot = true;
-                    }else{
+                    }else if(scores.length < 2){
                         isHot = false;
                     }
 

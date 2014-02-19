@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
 /**
@@ -5,14 +9,11 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
  * @author
  * Robotics
  */
-public class PassShot extends CommandBase
+public class StopShooter extends CommandBase
 {
-    private int isShot = 150;
-    boolean hasPassShot = false;
     
-    public PassShot()
+    public StopShooter()
     {
-        super("PassShot");
         requires(shooter);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,37 +22,23 @@ public class PassShot extends CommandBase
     // Called just before this Command runs the first time
     protected void initialize()
     {
-        shooter.resetEncoder();
-        shooter.startEncoder();
-        hasPassShot = false;
-        compressor.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-        if(shooter.getCount() < isShot){  
-            
-            System.out.println(shooter.getCount());
-            shooter.passShot();
-            
-        }
-        else{
-            shooter.idleShooter();
-            hasPassShot = true;
-        }
+        shooter.idleShooter();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return hasPassShot;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end()
     {
-        compressor.start();
     }
 
     // Called when another command which requires one or more of the same

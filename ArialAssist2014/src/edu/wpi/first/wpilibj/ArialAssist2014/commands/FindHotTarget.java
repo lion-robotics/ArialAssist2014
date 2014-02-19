@@ -14,7 +14,7 @@ public class FindHotTarget extends CommandBase
 
     protected void initialize()
     {
-        frameCounter = 5;
+        frameCounter = 2;
     }
 
     protected void execute()

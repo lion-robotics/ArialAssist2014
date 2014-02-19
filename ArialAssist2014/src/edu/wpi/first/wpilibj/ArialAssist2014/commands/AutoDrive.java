@@ -1,28 +1,36 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
+import edu.wpi.first.wpilibj.Timer;
+
 public class AutoDrive extends CommandBase
 {
-    double speed = 0.0;
+    float speed = 0;
+    double startTime = 0;
     double direction = 0.0;
+    double time = 0;
     
     public AutoDrive()
     {
         requires(driveTrain);
     }
     
-    public AutoDrive(double speed, double direction, double time)
+    public AutoDrive(float speed, double direction, double time)
     {
         this.speed = speed;
         this.direction = direction;
+        //this.time = time;
         setTimeout(time);
     }
 
     protected void initialize()
     {
+       //startTime = Timer.getFPGATimestamp();
+       
     }
 
     protected void execute()
     {
+        
         driveTrain.driveArcade(speed, direction);
     }
 

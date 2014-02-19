@@ -1,11 +1,12 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
+import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shoot extends CommandBase
 {
-    private int isShot = 200;
+    private int isShot = 185;
     boolean hasShot = false;
     
     public Shoot()
@@ -20,9 +21,9 @@ public class Shoot extends CommandBase
         shooter.resetEncoder();
         shooter.startEncoder();
         hasShot = false;
-        //pickupArm.extendArm();
+        pickupArm.retractArm();
         compressor.stop();
-        Timer.delay(.2);
+       // Timer.delay(1);
         
     }
 
@@ -30,7 +31,7 @@ public class Shoot extends CommandBase
     {
         if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
             
-            System.out.println(shooter.getCount());
+           // System.out.println(shooter.getCount());
             shooter.shootBall();
             
         }
