@@ -23,7 +23,7 @@ public class GetRange extends CommandBase
 
     protected void execute()
     {
-        System.out.println("Range: " + shooter.getRangeFeet());
+        //System.out.println("Range: " + shooter.getRangeFeet());
     }
 
     protected boolean isFinished()

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shoot extends CommandBase
 {
-    private int isShot = 185;
+    private int isShot = 175;
     boolean hasShot = false;
     
     public Shoot()

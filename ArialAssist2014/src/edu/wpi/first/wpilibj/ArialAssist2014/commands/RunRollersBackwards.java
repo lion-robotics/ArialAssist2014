@@ -1,14 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
-/**
- *
- * @author
- * Robotics
- */
 public class RunRollersBackwards extends CommandBase
 {
     int time = 200;
