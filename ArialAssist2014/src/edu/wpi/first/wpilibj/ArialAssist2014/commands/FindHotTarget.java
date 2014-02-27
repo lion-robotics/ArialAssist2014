@@ -14,7 +14,7 @@ public class FindHotTarget extends CommandBase
 
     protected void initialize()
     {
-        frameCounter = 2;
+        frameCounter = 1;
     }
 
     protected void execute()
@@ -23,6 +23,8 @@ public class FindHotTarget extends CommandBase
         {
             frameCounter--;
             vision.autonomous();
+            System.out.println(vision.isHot);
+            System.out.println(vision.numberOfTargets);
         } catch (AxisCameraException ex)
         {
             ex.printStackTrace();

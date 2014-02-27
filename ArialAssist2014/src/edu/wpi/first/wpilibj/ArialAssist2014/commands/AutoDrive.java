@@ -18,14 +18,14 @@ public class AutoDrive extends CommandBase
     {
         this.speed = speed;
         this.direction = direction;
-        //this.time = time;
+        this.time = time;
+        
         setTimeout(time);
     }
 
     protected void initialize()
     {
-       //startTime = Timer.getFPGATimestamp();
-       
+       setTimeout(time);  
     }
 
     protected void execute()

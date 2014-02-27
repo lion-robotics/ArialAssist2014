@@ -12,14 +12,17 @@ public class Autonomous extends CommandGroup
         
         addSequential(new FindHotTarget());
         addSequential(new ShiftLow());
-        Timer.delay(.1);
-        addParallel(new RunRollersBackwards());
+        //addParallel(new RunRollersBackwards());
         addSequential(new PickupArmRetract());
         addSequential(new AutoDrive(-1, 0, 2.2));
         addSequential(new WaitHotTarget(3.0));
         addSequential(new Shoot());
         addSequential(new PickupArmRetract());
         addSequential(new IdleShoot());
+       
+        
+        
+        
         
         // Add Commands here:
         // e.g. addSequential(new Command1());

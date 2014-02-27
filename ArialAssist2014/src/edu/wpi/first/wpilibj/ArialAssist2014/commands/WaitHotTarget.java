@@ -24,6 +24,7 @@ public class WaitHotTarget extends CommandBase
     protected boolean isFinished()
     {
         if(vision.isHot){
+            Timer.delay(1);
             return true;
         }else{
             Timer.delay(3.0);

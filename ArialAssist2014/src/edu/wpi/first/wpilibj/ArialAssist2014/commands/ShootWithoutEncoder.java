@@ -6,6 +6,8 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 public class ShootWithoutEncoder extends CommandBase
 {
     
+    boolean finished = false;
+    
     public ShootWithoutEncoder()
     {
         requires(shooter);
@@ -14,20 +16,27 @@ public class ShootWithoutEncoder extends CommandBase
     // Called just before this Command runs the first time
     protected void initialize()
     {
-        
+        finished = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-        System.out.println(shooter.getCount());
-        shooter.shootBall();
+        
+        if(!shooter.getSwitchState()){
+            finished = true;
+        }else{
+            System.out.println(shooter.getCount());
+            shooter.shootBall();
+            finished = false;
+        }
+       
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return false;
+        return finished;
     }
 
     // Called once after isFinished returns true

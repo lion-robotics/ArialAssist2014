@@ -12,6 +12,8 @@ public class ArcadeDriveWithJoystick extends CommandBase {
 
     protected void execute() {
         driveTrain.driveArcade(oi.driverJoystick.getY(), oi.driverJoystick.getZ());
+        //System.out.println("Drive Right: " + driveTrain.getCount(driveTrain.baseEncoderRight)+
+               // " Drive Left: " + driveTrain.getCount(driveTrain.baseEncoderLeft));
     }
 
     protected boolean isFinished() {

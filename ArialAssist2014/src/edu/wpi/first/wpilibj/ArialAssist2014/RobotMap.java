@@ -25,21 +25,30 @@ public class RobotMap {
     //encoders
     public static final int
             DRIVE_ENCODER_PORT_1 = 1,
-            DRIVE_ENCODER_PORT_2 = 2;
-    
+            DRIVE_ENCODER_PORT_2 = 2,
+            BASE_ENCODER_LEFT_PORT_1 = 3,
+            BASE_ENCODER_LEFT_PORT_2 = 4,
+            BASE_ENCODER_RIGHT_PORT_1 = 6,
+            BASE_ENCODER_RIGHT_PORT_2 = 7;
+            
+    //Kill Switch
+    public static final int
+            SWITCH_PORT = 8;
+            
     // Driver Joystick
     public static final int 
             TRANSMISSION_LOW_BUTTON = 11, //Driver 1
             TRANSMISSION_HI_BUTTON = 12, //Driver 1
             RETRACT_BUTTON = 3, //Driver 1
             EXTEND_UP_BUTTON = 5,
-            GET_RANGE = 2; //Driver 1
+            GET_RANGE = 2,
+            BUMP_BALL = 7; //Driver 1
 
 
     // Shooter Joystick
     public static final int
             SHOOT_BUTTON = 1, //Shooter 2
-            //READ_CAMERA_BUTTON = 7, //Shooter 2
+            READ_CAMERA_BUTTON = 5, //Shooter 2
             CHECK_ENCODER_BUTTON = 6, //Shooter 2
             SHOOT_WITHOUT_ENCODER_BUTTON = 9, //Shooter 2, Oh Shit Button 
             PRIME_WITHOUT_ENCODER_BUTTON = 10, //Shooter 2

@@ -146,59 +146,59 @@ public class Vision extends Subsystem {
                 }
 
                 //Zero out scores and set verticalIndex to first target in case there are no horizontal targets
-                target.totalScore = target.leftScore = target.rightScore = target.tapeWidthScore = target.verticalScore = 0;
-                target.verticalIndex = verticalTargets[0];
-                for (int i = 0; i < verticalTargetCount; i++) {
-                    ParticleAnalysisReport verticalReport = filteredImage.getParticleAnalysisReport(verticalTargets[i]);
-                    for (int j = 0; j < horizontalTargetCount; j++) {
-                        ParticleAnalysisReport horizontalReport = filteredImage.getParticleAnalysisReport(horizontalTargets[j]);
-                        double horizWidth, horizHeight, vertWidth, leftScore, rightScore, tapeWidthScore, verticalScore, total;
-
-                        //Measure equivalent rectangle sides for use in score calculation
-                        horizWidth = NIVision.MeasureParticle(filteredImage.image, horizontalTargets[j], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
-                        vertWidth = NIVision.MeasureParticle(filteredImage.image, verticalTargets[i], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
-                        horizHeight = NIVision.MeasureParticle(filteredImage.image, horizontalTargets[j], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
-
-                        //Determine if the horizontal target is in the expected location to the left of the vertical target
-                        leftScore = ratioToScore(1.2 * (verticalReport.boundingRectLeft - horizontalReport.center_mass_x) / horizWidth);
-                        //Determine if the horizontal target is in the expected location to the right of the  vertical target
-                        rightScore = ratioToScore(1.2 * (horizontalReport.center_mass_x - verticalReport.boundingRectLeft - verticalReport.boundingRectWidth) / horizWidth);
-                        //Determine if the width of the tape on the two targets appears to be the same
-                        tapeWidthScore = ratioToScore(vertWidth / horizHeight);
-                        //Determine if the vertical location of the horizontal target appears to be correct
-                        verticalScore = ratioToScore(1 - (verticalReport.boundingRectTop - horizontalReport.center_mass_y) / (4 * horizHeight));
-                        total = leftScore > rightScore ? leftScore : rightScore;
-                        total += tapeWidthScore + verticalScore;
-
-                        //If the target is the best detected so far store the information about it
-                        if (total > target.totalScore) {
-                            target.horizontalIndex = horizontalTargets[j];
-                            target.verticalIndex = verticalTargets[i];
-                            target.totalScore = total;
-                            target.leftScore = leftScore;
-                            target.rightScore = rightScore;
-                            target.tapeWidthScore = tapeWidthScore;
-                            target.verticalScore = verticalScore;
-                        }
-                    }
-                    //Determine if the best target is a Hot target
-                    target.Hot = hotOrNot(target);
-                }
-
-                if (verticalTargetCount > 0) {
-                                    //Information about the target is contained in the "target" structure
-                    //To get measurement information such as sizes or locations use the
-                    //horizontal or vertical index to get the particle report as shown below
-                    ParticleAnalysisReport distanceReport = filteredImage.getParticleAnalysisReport(target.verticalIndex);
-                    double distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
-                    if (target.Hot) {
-                       // System.out.println("Hot target located");
-                        //System.out.println("Distance: " + distance);
-                    } else {
-                        //System.out.println("No hot target present");
-                        //System.out.println("Distance: " + distance);
-                    }
-                }
+//                target.totalScore = target.leftScore = target.rightScore = target.tapeWidthScore = target.verticalScore = 0;
+//                target.verticalIndex = verticalTargets[0];
+//                for (int i = 0; i < verticalTargetCount; i++) {
+//                    ParticleAnalysisReport verticalReport = filteredImage.getParticleAnalysisReport(verticalTargets[i]);
+//                    for (int j = 0; j < horizontalTargetCount; j++) {
+//                        ParticleAnalysisReport horizontalReport = filteredImage.getParticleAnalysisReport(horizontalTargets[j]);
+//                        double horizWidth, horizHeight, vertWidth, leftScore, rightScore, tapeWidthScore, verticalScore, total;
+//
+//                        //Measure equivalent rectangle sides for use in score calculation
+//                        horizWidth = NIVision.MeasureParticle(filteredImage.image, horizontalTargets[j], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
+//                        vertWidth = NIVision.MeasureParticle(filteredImage.image, verticalTargets[i], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
+//                        horizHeight = NIVision.MeasureParticle(filteredImage.image, horizontalTargets[j], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
+//
+//                        //Determine if the horizontal target is in the expected location to the left of the vertical target
+//                        leftScore = ratioToScore(1.2 * (verticalReport.boundingRectLeft - horizontalReport.center_mass_x) / horizWidth);
+//                        //Determine if the horizontal target is in the expected location to the right of the  vertical target
+//                        rightScore = ratioToScore(1.2 * (horizontalReport.center_mass_x - verticalReport.boundingRectLeft - verticalReport.boundingRectWidth) / horizWidth);
+//                        //Determine if the width of the tape on the two targets appears to be the same
+//                        tapeWidthScore = ratioToScore(vertWidth / horizHeight);
+//                        //Determine if the vertical location of the horizontal target appears to be correct
+//                        verticalScore = ratioToScore(1 - (verticalReport.boundingRectTop - horizontalReport.center_mass_y) / (4 * horizHeight));
+//                        total = leftScore > rightScore ? leftScore : rightScore;
+//                        total += tapeWidthScore + verticalScore;
+//
+//                        //If the target is the best detected so far store the information about it
+//                        if (total > target.totalScore) {
+//                            target.horizontalIndex = horizontalTargets[j];
+//                            target.verticalIndex = verticalTargets[i];
+//                            target.totalScore = total;
+//                            target.leftScore = leftScore;
+//                            target.rightScore = rightScore;
+//                            target.tapeWidthScore = tapeWidthScore;
+//                            target.verticalScore = verticalScore;
+//                        }
+//                    }
+//                    //Determine if the best target is a Hot target
+//                    target.Hot = hotOrNot(target);
+//                }
+//
+//                if (verticalTargetCount > 0) {
+//                                    //Information about the target is contained in the "target" structure
+//                    //To get measurement information such as sizes or locations use the
+//                    //horizontal or vertical index to get the particle report as shown below
+//                    ParticleAnalysisReport distanceReport = filteredImage.getParticleAnalysisReport(target.verticalIndex);
+//                    double distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
+//                    if (target.Hot) {
+//                       // System.out.println("Hot target located");
+//                        //System.out.println("Distance: " + distance);
+//                    } else {
+//                        //System.out.println("No hot target present");
+//                        //System.out.println("Distance: " + distance);
+//                    }
+//                }
             }
 
             /**

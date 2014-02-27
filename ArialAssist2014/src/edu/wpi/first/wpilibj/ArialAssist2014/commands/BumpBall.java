@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
 /**
@@ -5,14 +9,15 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
  * @author
  * Robotics
  */
-public class PassShot extends CommandBase
+public class BumpBall extends CommandBase
 {
-    private int isShot = 150;
-    boolean hasPassShot = false;
     
-    public PassShot()
+    private int isShot = 7;
+    boolean hasBumpShot = false;
+    
+    public BumpBall()
     {
-        super("PassShot");
+        super("BumpShot");
         requires(shooter);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,7 +28,7 @@ public class PassShot extends CommandBase
     {
         shooter.resetEncoder();
         shooter.startEncoder();
-        hasPassShot = false;
+        hasBumpShot = false;
         compressor.stop();
     }
 
@@ -31,32 +36,30 @@ public class PassShot extends CommandBase
     protected void execute()
     {
         if(!shooter.getSwitchState()){
-            hasPassShot = true;
+            hasBumpShot = true;
         }else{
-            if(shooter.getCount() < isShot){  
+             if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
             
-            System.out.println(shooter.getCount());
+           // System.out.println(shooter.getCount());
             shooter.passShot();
             
             }
             else{
                 shooter.idleShooter();
-                hasPassShot = true;
+                hasBumpShot = true;
             }
         }
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return hasPassShot;
+        return hasBumpShot;
     }
 
     // Called once after isFinished returns true
     protected void end()
     {
-        compressor.start();
     }
 
     // Called when another command which requires one or more of the same

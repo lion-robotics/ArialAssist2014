@@ -23,21 +23,35 @@ public class Shoot extends CommandBase
         hasShot = false;
         pickupArm.retractArm();
         compressor.stop();
+        shooter.clearKillSwitchTriggered();
        // Timer.delay(1);
         
     }
 
     protected void execute()
     {
-        if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
+        if(!shooter.getSwitchState()){//shooter.isKillSwitchTriggered()){
             
-           // System.out.println(shooter.getCount());
-            shooter.shootBall();
-            
-        }
-        else{
-            shooter.idleShooter();
             hasShot = true;
+            System.out.println("Triggered Switch!!!!!");
+            
+        }else{
+            
+//            if(shooter.getSwitchState()){
+//                shooter.setKillSwitchTriggered(); 
+//                return;
+//            }
+            
+            if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
+
+               // System.out.println(shooter.getCount());
+                shooter.shootBall();
+
+            }
+            else{
+                shooter.idleShooter();
+                hasShot = true;
+            }
         }
     }
 

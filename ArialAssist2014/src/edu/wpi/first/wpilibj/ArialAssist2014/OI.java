@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.BumpBall;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.FindHotTarget;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.GetRange;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PassShot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PickupArmExtend;
@@ -52,12 +54,15 @@ public class OI {
     public Button passRoller =
             new JoystickButton(shooterJoystick, RobotMap.PASS_ROLLER);
     
+    public Button bumpBall =
+            new JoystickButton(driverJoystick, RobotMap.BUMP_BALL);
+    
     // Shooter Joystick.
     public Button shootButton =
             new JoystickButton(shooterJoystick, RobotMap.SHOOT_BUTTON);
     
-    // public Button readCamera =
-           // new JoystickButton(shooterJoystick, RobotMap.READ_CAMERA_BUTTON);
+    public Button readCamera =
+           new JoystickButton(shooterJoystick, RobotMap.READ_CAMERA_BUTTON);
     
     public Button getRange = 
             new JoystickButton(driverJoystick, RobotMap.GET_RANGE);
@@ -82,6 +87,9 @@ public class OI {
      
     
     public OI(){
+        
+        bumpBall.whenPressed(new BumpBall());
+        
         hiTransmission.whenPressed(new ShiftTransmission(true));
         
         lowTransmission.whenPressed(new ShiftTransmission(false));
@@ -100,7 +108,7 @@ public class OI {
         
         stopTheMotor.whenPressed(new StopShooter());
         
-        //readCamera.whenPressed(new FindHotTarget());
+        readCamera.whenPressed(new FindHotTarget());
         
         shootButton.whenPressed(new Shoot());
         

@@ -1,12 +1,18 @@
-package edu.wpi.first.wpilibj.ArialAssist2014.commands;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-public class RunRollersBackwards extends CommandBase
+/**
+ *
+ * @author
+ * Robotics
+ */
+public class BumpBall extends CommandBase
 {
-    int time;
-     
-    public RunRollersBackwards()
+    
+    public BumpBall()
     {
-        requires(pickupRoller);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -14,20 +20,17 @@ public class RunRollersBackwards extends CommandBase
     // Called just before this Command runs the first time
     protected void initialize()
     {
-       time = 200;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-        pickupRoller.passSlow();
-        time--;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return (time == 0);
+        return false;
     }
 
     // Called once after isFinished returns true

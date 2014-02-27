@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.ArialAssist2014.commands.IdleShoot;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.testIdle;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.RetractWithoutEncoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalModule;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
@@ -20,6 +21,10 @@ public class Shooter extends Subsystem {
     Talon rightTalonOne;
     
     Encoder driveEncoder;
+    
+    DigitalInput killSwitch;
+    boolean killSwitchTriggered = false;
+    
     I2C rangeFinder;
     
     public Shooter(){
@@ -27,6 +32,8 @@ public class Shooter extends Subsystem {
         
         leftTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.SHOOTER_TALON_ONE);
         rightTalonOne = new Talon(RobotMap.DIGITAL_SIDECAR, RobotMap.SHOOTER_TALON_TWO);
+        
+        killSwitch = new DigitalInput(1, RobotMap.SWITCH_PORT);
         
         driveEncoder = new Encoder(RobotMap.DRIVE_ENCODER_PORT_1, RobotMap.DRIVE_ENCODER_PORT_2, true, EncodingType.k4X);
         
@@ -110,7 +117,25 @@ public class Shooter extends Subsystem {
         rightTalonOne.set(-1);
     }
     
-    // Retuerns number of centimeters to closest object.
+    public boolean getSwitchState(){
+        return killSwitch.get();
+    }
+    
+    public boolean isKillSwitchTriggered(){
+        return killSwitchTriggered;
+    }
+    
+    public void setKillSwitchTriggered(){
+        killSwitchTriggered = true;
+    }
+    
+    public void clearKillSwitchTriggered(){
+        killSwitchTriggered = false;
+    }
+    
+    
+    
+    // Returns number of centimeters to closest object.
     
     public double getRangeFeet()
     {
