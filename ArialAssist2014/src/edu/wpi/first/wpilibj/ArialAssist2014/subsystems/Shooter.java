@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.ArialAssist2014.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.ArialAssist2014.RobotMap;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.IdleShoot;
@@ -25,7 +26,8 @@ public class Shooter extends Subsystem {
     DigitalInput killSwitch;
     boolean killSwitchTriggered = false;
     
-    I2C rangeFinder;
+    //I2C rangeFinder;
+    AnalogChannel rangeFinder;
     
     public Shooter(){
         super("Shooter");
@@ -47,8 +49,9 @@ public class Shooter extends Subsystem {
         
         startEncoder();
         
-        rangeFinder = new I2C(DigitalModule.getInstance(RobotMap.DIGITAL_SIDECAR), RobotMap.RANGE_FINDER_ID);
-        rangeFinder.setCompatabilityMode(false);
+        rangeFinder = new AnalogChannel(1, 1);
+        //rangeFinder = new I2C(DigitalModule.getInstance(RobotMap.DIGITAL_SIDECAR), RobotMap.RANGE_FINDER_ID);
+        //rangeFinder.setCompatabilityMode(false);
     }
     public void initDefaultCommand() { 
         setDefaultCommand(new IdleShoot());
@@ -136,35 +139,40 @@ public class Shooter extends Subsystem {
     
     
     // Returns number of centimeters to closest object.
+    public double getRangeValue(){
+        return rangeFinder.getValue();
+    }
     
-    public double getRangeFeet()
+    public double getRangeVoltage()
     {
-        int centimeters;
-        double range;
-        
-        rangeFinder.write(RobotMap.RANGE_FINDER_ID, RobotMap.RANGE_READ_MESSAGE);
-        
-        byte data[] = new byte[2];
-        
-        rangeFinder.read(RobotMap.RANGE_FINDER_ID, 2, data);
-        
-        // MSB byte 0
-        // LSB byte 1
-        
-        // Javs is Big Endian
-        centimeters = (data[0] << 8) | data[1];
-        
-        // 1 cm *  1 in   *  1 ft 
-        //        2.54 cm   12 in
-        
-        range = centimeters / 2.54 / 12.0;
-        
-        DriverStationLCD.getInstance().println(
-            DriverStationLCD.Line.kUser1,
-            1,
-            "Range ft: " + range);
-        
+        double range = rangeFinder.getVoltage();
         return range;
+//        //int centimeters;
+//        double range;
+//        
+//        rangeFinder.write(RobotMap.RANGE_FINDER_ID, RobotMap.RANGE_READ_MESSAGE);
+//        
+//        byte data[] = new byte[2];
+//        
+//        rangeFinder.read(RobotMap.RANGE_FINDER_ID, 2, data);
+//        
+//        // MSB byte 0
+//        // LSB byte 1
+//        
+//        // Javs is Big Endian
+//        centimeters = (data[0] << 8) | data[1];
+//        
+//        // 1 cm *  1 in   *  1 ft 
+//        //        2.54 cm   12 in
+//        
+//        range = centimeters / 2.54 / 12.0;
+//        
+//        DriverStationLCD.getInstance().println(
+//            DriverStationLCD.Line.kUser1,
+//            1,
+//            "Range ft: " + range);
+//        
+//        return range;
     }
     
 }

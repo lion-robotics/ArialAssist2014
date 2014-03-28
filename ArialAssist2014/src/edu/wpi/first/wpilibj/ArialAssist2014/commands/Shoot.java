@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shoot extends CommandBase
 {
-    private int isShot = 175;
+    private int isShot = 175;   //Bag Day encoder value: 175
     boolean hasShot = false;
     
     public Shoot()
@@ -44,7 +44,7 @@ public class Shoot extends CommandBase
             
             if(shooter.getCount() < isShot){  //SmartDashboard.getNumber("Stop Position")) {
 
-               // System.out.println(shooter.getCount());
+                System.out.println("Shooter " + shooter.getCount());
                 shooter.shootBall();
 
             }

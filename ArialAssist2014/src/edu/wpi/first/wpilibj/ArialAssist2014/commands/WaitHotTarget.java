@@ -24,10 +24,10 @@ public class WaitHotTarget extends CommandBase
     protected boolean isFinished()
     {
         if(vision.isHot){
-            Timer.delay(1);
+            Timer.delay(1.75);
             return true;
         }else{
-            Timer.delay(3.0);
+            Timer.delay(1.75);
             return true;
         }
     }

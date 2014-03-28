@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 public class TrussShot extends CommandBase
 {
     
-    private int isShot = 75;
+    private int isShot = 90;    //Bag Day Truss encoder value: 75
     boolean hasTrussShot = false;
     
     public TrussShot()

@@ -23,12 +23,13 @@ public class GetRange extends CommandBase
 
     protected void execute()
     {
-        //System.out.println("Range: " + shooter.getRangeFeet());
+        System.out.println("Range (voltage): " + shooter.getRangeVoltage() + " (value): " + shooter.getRangeValue());
+        
     }
 
     protected boolean isFinished()
     {
-        return false;
+        return true;
     }
 
     protected void end()

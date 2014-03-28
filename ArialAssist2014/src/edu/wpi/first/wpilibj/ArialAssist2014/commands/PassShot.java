@@ -35,7 +35,7 @@ public class PassShot extends CommandBase
         }else{
             if(shooter.getCount() < isShot){  
             
-            System.out.println(shooter.getCount());
+            System.out.println("Pass: " + shooter.getCount());
             shooter.passShot();
             
             }

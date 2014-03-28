@@ -84,6 +84,7 @@ public class OI {
       
       public Button stopTheMotor = 
               new JoystickButton(shooterJoystick, RobotMap.STOP_SHOOTER_BUTTON);
+      
      
     
     public OI(){

@@ -111,18 +111,26 @@ public class DriveTrain extends Subsystem {
         return e.getStopped();
     }
     
-    public void resetEncoder(Encoder e){
-        e.reset();
+    public void resetEncoder(){
+        baseEncoderRight.reset();
+        baseEncoderLeft.reset();
     }
     
-    public void stopEncoder(Encoder e){
-        e.stop();
+    public void stopEncoder(){
+        baseEncoderRight.stop();
+        baseEncoderLeft.stop();
     }
     
-    public void startEncoder(Encoder e){
-        e.start();
+    public void startEncoder(){
+        baseEncoderRight.start();
+        baseEncoderLeft.start();
     }
     
+    double clickPerInch = 17420/129.0;
+    public int convertToInches(double inches){
+        
+        return (int) (inches*clickPerInch);
+    }
     
     public void initDefaultCommand() {
         setDefaultCommand(new ArcadeDriveWithJoystick());

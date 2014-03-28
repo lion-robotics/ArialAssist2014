@@ -36,6 +36,7 @@ public class Vision extends Subsystem {
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
     
+    public int numHorizontal = 0;
     public boolean isHot = false;
     public int numberOfTargets = 0;
 
@@ -119,6 +120,10 @@ public class Vision extends Subsystem {
                     scores[i].centerOfMassX = report.center_mass_x;
                     scores[i].centerOfMassY = report.center_mass_y;
                     scores[i].isVertical = scoreCompare(scores[i], true);
+                    
+                    if(!scores[i].isVertical){
+                        numHorizontal++;
+                    }
                     
                     System.out.println(scores[i].toString());
                     
