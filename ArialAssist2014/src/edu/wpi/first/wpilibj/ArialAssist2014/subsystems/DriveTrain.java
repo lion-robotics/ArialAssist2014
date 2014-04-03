@@ -126,7 +126,7 @@ public class DriveTrain extends Subsystem {
         baseEncoderLeft.start();
     }
     
-    double clickPerInch = 17420/129.0;
+    double clickPerInch = 23000/129.0;
     public int convertToInches(double inches){
         
         return (int) (inches*clickPerInch);

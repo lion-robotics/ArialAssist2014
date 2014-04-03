@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.BumpBall;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.Dump;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.FindHotTarget;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.GetRange;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.PassShot;
@@ -42,7 +43,7 @@ public class OI {
     public Button retract =
             new JoystickButton(driverJoystick, RobotMap.RETRACT_BUTTON);
     
-    public Button passShot =
+    public Button dump =
             new JoystickButton(shooterJoystick, RobotMap.PASS_SHOT_BUTTON);
     
     public Button trussShot =
@@ -99,7 +100,7 @@ public class OI {
         
         retract.whenPressed(new PickupArmRetract());
         
-        passShot.whenPressed(new PassShot());
+        dump.whenPressed(new Dump());
         
         trussShot.whenPressed(new TrussShot());
         
