@@ -25,6 +25,11 @@ public class PickupRoller extends Subsystem {
         rollerOne.set(.87);
        
     }
+    
+    public void slowIn(){
+        rollerOne.set(.65);
+    }
+    
     public void pass(){
        rollerOne.set(-.87);
        

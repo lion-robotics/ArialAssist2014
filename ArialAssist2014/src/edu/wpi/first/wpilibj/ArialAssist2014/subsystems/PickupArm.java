@@ -11,6 +11,8 @@ public class PickupArm extends Subsystem {
     
     Solenoid ArmOne;
     Solenoid ArmTwo;
+    
+    public boolean isRetracting = false;
 
     public PickupArm(){
         super("PickupArm");

@@ -2,11 +2,11 @@ package edu.wpi.first.wpilibj.ArialAssist2014.commands;
 
 public class PickupRollerPull extends CommandBase
 {
-    
+
     public PickupRollerPull()
     {
         super("PickupRollerPull");
-        
+
         requires(pickupRoller);
     }
 
@@ -16,7 +16,14 @@ public class PickupRollerPull extends CommandBase
 
     protected void execute()
     {
-       pickupRoller.pullIn();
+        if (pickupArm.isRetracting)
+        {
+            pickupRoller.slowIn();
+        } else
+        {
+            pickupRoller.pullIn();
+        }
+
     }
 
     protected boolean isFinished()

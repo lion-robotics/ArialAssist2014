@@ -14,6 +14,7 @@ public class PickupArmExtend extends CommandBase
     
     protected void initialize()
     {
+        pickupArm.isRetracting = true;
     }
 
     protected void execute()
