@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
  //Test for Portland, test for Portland worked.
- //Second test
+ //Second test, second test worked.
 public class ArialAssist2014 extends IterativeRobot {
 
     Command autonomousCommand;
