@@ -13,8 +13,8 @@ public class WaitHotTarget extends CommandBase
 
     protected void initialize()
     {
-        System.out.println(vision.isHot);
-        System.out.println(vision.numberOfTargets);
+//        System.out.println(vision.isHot);
+//        System.out.println(vision.numberOfTargets);
     }
 
     protected void execute()
@@ -23,13 +23,13 @@ public class WaitHotTarget extends CommandBase
 
     protected boolean isFinished()
     {
-        if(vision.isHot){
+        //if(vision.isHot){
             Timer.delay(1.75);
             return true;
-        }else{
-            Timer.delay(1.75);
-            return true;
-        }
+       // }else{
+           // Timer.delay(1.75);
+            //return true;
+        //}
     }
 
     protected void end()

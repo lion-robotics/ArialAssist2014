@@ -18,7 +18,7 @@ public abstract class CommandBase extends Command {
     public static PickupArm pickupArm = new PickupArm();
     public static PickupRoller pickupRoller = new PickupRoller();
     public static Shooter shooter = new Shooter();
-    public static Vision vision = new Vision(); //new Vision();
+    //public static Vision vision = new Vision(); //new Vision();
     public static RobotCompressor compressor = new RobotCompressor();
 
     public static void init() {
@@ -34,7 +34,7 @@ public abstract class CommandBase extends Command {
         SmartDashboard.putData(pickupArm);
         SmartDashboard.putData(pickupRoller);
         SmartDashboard.putData(shooter);
-        SmartDashboard.putData(vision);
+       // SmartDashboard.putData(vision);
     }
 
     public CommandBase(String name) {

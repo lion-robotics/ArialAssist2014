@@ -23,12 +23,12 @@ public class AutoDrive extends CommandBase
         requires(driveTrain);
     }
     
-    public AutoDrive(float speed, double direction, double inches)
+    public AutoDrive(float speed, double direction, double time)
     {
         this.speed = speed;
         this.direction = direction;
         this.time = time;
-        distance = inches;
+        //distance = inches;
         
         //setTimeout(time);
     }
@@ -38,25 +38,25 @@ public class AutoDrive extends CommandBase
         
          // SmartDashboard.putBoolean("LED 1", true);
         
-        if(SmartDashboard.getBoolean("Checkbox 1")){
-            double adjust = (SmartDashboard.getNumber("Slider 1") - 50) * adjustFactor;
-            isDriven = driveTrain.convertToInches(distance + adjust);
-        }else{
-            isDriven = driveTrain.convertToInches(distance);
-        }
+//        if(SmartDashboard.getBoolean("Checkbox 1")){
+//            double adjust = (SmartDashboard.getNumber("Slider 1") - 50) * adjustFactor;
+//            isDriven = driveTrain.convertToInches(distance + adjust);
+//        }else{
+//            isDriven = driveTrain.convertToInches(distance);
+//        }
         
           //Left: 17260 Right: -14819
           //Left: 17382 Right: -22076
           //Left: 17488 Right: -31
           //Inches: 129   Left: 17352 Right: -21089
           //Left: 17420 Right: -629
-        driveTrain.resetEncoder();
+        //driveTrain.resetEncoder();
        
-        driveTrain.startEncoder();
+        //driveTrain.startEncoder();
 
 //        hasDriven = false;
       
-       // setTimeout(time);  
+       setTimeout(time);  
        
     }
 
@@ -66,6 +66,8 @@ public class AutoDrive extends CommandBase
 //        if(driveTrain.getCount(driveTrain.baseEncoderLeft) < isDriven || 
 //                driveTrain.getCount(driveTrain.baseEncoderLeft) < isDriven){
             driveTrain.driveArcade(speed, direction);
+//            System.out.println("Left: " + driveTrain.getCount(driveTrain.baseEncoderLeft) + " Right: "
+//                + driveTrain.getCount(driveTrain.baseEncoderRight));
             
 //        }else{
 //            driveTrain.driveArcade(0, 0);
@@ -76,14 +78,14 @@ public class AutoDrive extends CommandBase
 
     protected boolean isFinished()
     {
-        //return isTimedOut();
-        return driveTrain.getCount(driveTrain.baseEncoderLeft) > isDriven;
+        return isTimedOut();
+        //return driveTrain.getCount(driveTrain.baseEncoderLeft) > isDriven;
     }
 
     protected void end()
     {
-        System.out.println("Left: " + driveTrain.getCount(driveTrain.baseEncoderLeft) + " Right: "
-                + driveTrain.getCount(driveTrain.baseEncoderRight));
+//        System.out.println("Left: " + driveTrain.getCount(driveTrain.baseEncoderLeft) + " Right: "
+//                + driveTrain.getCount(driveTrain.baseEncoderRight));
         //SmartDashboard.putBoolean("LED 1", false);
     }
 

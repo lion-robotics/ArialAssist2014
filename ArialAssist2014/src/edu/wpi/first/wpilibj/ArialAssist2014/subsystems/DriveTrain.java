@@ -40,21 +40,21 @@ public class DriveTrain extends Subsystem {
         baseEncoderRight = new Encoder(RobotMap.BASE_ENCODER_RIGHT_PORT_1, RobotMap.BASE_ENCODER_RIGHT_PORT_2, true, CounterBase.EncodingType.k4X);
         baseEncoderLeft = new Encoder(RobotMap.BASE_ENCODER_LEFT_PORT_1, RobotMap.BASE_ENCODER_LEFT_PORT_2, true, CounterBase.EncodingType.k4X);
         
-        baseEncoderRight.setMaxPeriod(.1);
-        baseEncoderRight.setMinRate(10);
-        baseEncoderRight.setReverseDirection(true);
-        baseEncoderRight.setDistancePerPulse(5);
-        baseEncoderRight.setSamplesToAverage(7);
-        baseEncoderRight.reset();
-        baseEncoderRight.start();
-        
-        baseEncoderLeft.setMaxPeriod(.1);
-        baseEncoderLeft.setMinRate(10);
-        baseEncoderLeft.setReverseDirection(true);
-        baseEncoderLeft.setDistancePerPulse(5);
-        baseEncoderLeft.setSamplesToAverage(7);
-        baseEncoderLeft.reset();
-        baseEncoderLeft.start();
+//        baseEncoderRight.setMaxPeriod(.1);
+//        baseEncoderRight.setMinRate(10);
+//        baseEncoderRight.setReverseDirection(true);
+//        baseEncoderRight.setDistancePerPulse(5);
+//        baseEncoderRight.setSamplesToAverage(7);
+//        baseEncoderRight.reset();
+//        baseEncoderRight.start();
+//        
+//        baseEncoderLeft.setMaxPeriod(.1);
+//        baseEncoderLeft.setMinRate(10);
+//        baseEncoderLeft.setReverseDirection(true);
+//        baseEncoderLeft.setDistancePerPulse(5);
+//        baseEncoderLeft.setSamplesToAverage(7);
+//        baseEncoderLeft.reset();
+//        baseEncoderLeft.start();
         
         leftTransmissionOne = new Solenoid(RobotMap.TRANSMISSION_SOLENOID_ONE);
         rightTransmissionOne = new Solenoid(RobotMap.TRANSMISSION_SOLENOID_TWO);
