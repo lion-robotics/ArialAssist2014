@@ -6,13 +6,18 @@ public class WaitHotTarget extends CommandBase
 {
     double timeout;
     
-    public WaitHotTarget(double timeout)
+    public WaitHotTarget()
     {
-        this.timeout = timeout;
+        
     }
 
     protected void initialize()
     {
+        if(kinect.hot){
+            setTimeout(.75);
+        }else{
+            setTimeout(3);
+        }
 //        System.out.println(vision.isHot);
 //        System.out.println(vision.numberOfTargets);
     }
@@ -24,8 +29,8 @@ public class WaitHotTarget extends CommandBase
     protected boolean isFinished()
     {
         //if(vision.isHot){
-            Timer.delay(1.75);
-            return true;
+            
+            return isTimedOut();
        // }else{
            // Timer.delay(1.75);
             //return true;

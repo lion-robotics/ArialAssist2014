@@ -18,6 +18,7 @@ public abstract class CommandBase extends Command {
     public static PickupArm pickupArm = new PickupArm();
     public static PickupRoller pickupRoller = new PickupRoller();
     public static Shooter shooter = new Shooter();
+    public static Kinect kinect = new Kinect();
     //public static Vision vision = new Vision(); //new Vision();
     public static RobotCompressor compressor = new RobotCompressor();
 

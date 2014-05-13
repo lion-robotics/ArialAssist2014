@@ -42,7 +42,8 @@ public class RobotMap {
             RETRACT_BUTTON = 3, //Driver 1
             EXTEND_UP_BUTTON = 5,
             GET_RANGE = 2,
-            BUMP_BALL = 7; //Driver 1
+            BUMP_BALL = 7,
+            DETECT_KINECT = 4; //Driver 1
 
 
     // Shooter Joystick

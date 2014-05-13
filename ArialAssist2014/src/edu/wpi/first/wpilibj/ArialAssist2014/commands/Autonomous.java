@@ -15,7 +15,8 @@ public class Autonomous extends CommandGroup
         //addParallel(new RunRollersBackwards());
         addSequential(new PickupArmRetract());
         addSequential(new AutoDrive(-1, 0, 2.9));
-        addSequential(new WaitHotTarget(3.0));
+        addSequential(new DetectKinect());
+        addSequential(new WaitHotTarget());
         addSequential(new Shoot());
         addSequential(new PickupArmRetract());
         addSequential(new IdleShoot());

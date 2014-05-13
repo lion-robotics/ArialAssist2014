@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.ArialAssist2014;
 
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.BumpBall;
+import edu.wpi.first.wpilibj.ArialAssist2014.commands.DetectKinect;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.Dump;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.FindHotTarget;
 import edu.wpi.first.wpilibj.ArialAssist2014.commands.GetRange;
@@ -39,6 +40,9 @@ public class OI {
    
     public Button extend =
             new JoystickButton(driverJoystick, RobotMap.EXTEND_UP_BUTTON);
+    
+    public Button kinect =
+            new JoystickButton(driverJoystick, RobotMap.DETECT_KINECT);
     
     public Button retract =
             new JoystickButton(driverJoystick, RobotMap.RETRACT_BUTTON);
@@ -97,6 +101,8 @@ public class OI {
         lowTransmission.whenPressed(new ShiftTransmission(false));
         
         extend.whenPressed(new PickupArmExtend());
+        
+        kinect.whenPressed(new DetectKinect());
         
         retract.whenPressed(new PickupArmRetract());
         
